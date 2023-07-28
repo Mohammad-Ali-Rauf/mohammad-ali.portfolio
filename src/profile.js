@@ -84,10 +84,10 @@ const section3Title = "Projects";
 const projects = [
   {
     // Add image in './styles/images.css' in #project1
-    id: "project1",
-    name: "Project 1",
-    skills: ["HTML, CSS, JS"],
-    url: "https://github.com/kaustubhai",
+    id: "1",
+    name: "GitHub Finder",
+    skills: ["REACT JS, HTML, CSS"],
+    url: "https://github.com/Mohammad-Ali-Rauf/Github-Finder",
   },
   {
     // Add image in './styles/images.css' in #project2

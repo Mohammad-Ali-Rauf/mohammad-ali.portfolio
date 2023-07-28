@@ -18,6 +18,29 @@ function App() {
     // eslint-disable-next-line
   }, []);
 
+  useEffect(() => {
+    const applyDarkMode = () => {
+      document.documentElement.classList.add('dark-mode');
+      const notDarkElem1 = document.getElementById('not-dark');
+      const notDarkElem2 = document.getElementById('not-dark2');
+      const imgProElems = document.getElementsByClassName('img-pro');
+
+      if (notDarkElem1) {
+        notDarkElem1.classList.add('inverse-dark');
+      }
+
+      if (notDarkElem2) {
+        notDarkElem2.classList.add('inverse-dark');
+      }
+
+      for (let i = 0; i < imgProElems.length; i++) {
+        imgProElems[i].classList.add('inverse-dark');
+      }
+    };
+
+    applyDarkMode();
+  }, []);
+
   return (
     <div className="App">
       <Header />

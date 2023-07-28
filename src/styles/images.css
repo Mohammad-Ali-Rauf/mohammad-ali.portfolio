@@ -1,12 +1,12 @@
 
 /* Add your profile image here */
 .Photo{
-    background-image: url('../assets/profile-modified.png');
+    background-image: url('../assets/profile/profile-modified.png');
     background-position: center;
 }
 /* Projects Photo */
 .project1{
-    background-image: url('https://via.placeholder.com/400x600.png?text=Project+one');
+    background-image: url('../assets/projects/github-finder.png');
     cursor: none;    
 }
 .project2{
