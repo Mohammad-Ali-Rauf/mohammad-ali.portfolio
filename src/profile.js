@@ -9,7 +9,7 @@ const animation = {
 };
 // Change your display name on tha landing display
 const header = {
-  name: "a Human",
+  name: "Mohammad Ali",
 };
 const background = {
   // Options: Snow or Particle
@@ -20,7 +20,7 @@ const background = {
 const section2title = "About Me";
 const about = {
   paragraph:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris nunc congue nisi vitae suscipit tellus mauris a diam. ",
+    "Passionate React.js dev skilled in Bootstrap 5, HTML/CSS/JS, crafting captivating web experiences with a user-centric approach. Code enthusiast, pixel-perfectionist; turning design concepts into seamless, stunning realities through dynamic React.js interfaces.",
 };
 // Edit your skill and the percentage you know about it
 // To Add a skill, copy any one below and paste it after the last comma
@@ -41,46 +41,46 @@ const skillsBar = [
     // svg: '',
     faClass: "fab fa-js",
   },
+  // {
+  //   name: "SASS",
+  //   // svg: '',
+  //   faClass: "fab fa-sass",
+  // },
+  // {
+  //   name: "Node",
+  //   // svg: '',
+  //   faClass: "fab fa-node",
+  // },
+  // {
+  //   name: "Python",
+  //   // svg: '',
+  //   faClass: "fab fa-python",
+  // },
   {
-    name: "SASS",
+    name: "React JS",
     // svg: '',
-    faClass: "fab fa-sass",
+    faClass: "fab fa-react",
   },
   {
-    name: "Node",
+    name: "Bootstrap 5",
     // svg: '',
-    faClass: "fab fa-node",
+    faClass: "fab fa-bootstrap",
   },
-  {
-    name: "Python",
-    // svg: '',
-    faClass: "fab fa-python",
-  },
-  {
-    name: "Java",
-    // svg: '',
-    faClass: "fab fa-java",
-  },
-  {
-    name: "PHP",
-    // svg: '',
-    faClass: "fab fa-php",
-  },
-  {
-    name: "Database",
-    // svg: '',
-    faClass: "fas fa-database",
-  },
-  {
-    name: "AWS",
-    // svg: '',
-    faClass: "fab fa-aws",
-  },
+  // {
+  //   name: "Database",
+  //   // svg: '',
+  //   faClass: "fas fa-database",
+  // },
+  // {
+  //   name: "AWS",
+  //   // svg: '',
+  //   faClass: "fab fa-aws",
+  // },
 ];
 // Edit your projects, its name, your skills used to make it, and the url.
 // You can omit freely anything if you dont have it
 // To Add a Project, copy any one below and paste it after the last comma and increment the id's project number
-const section3Title = "Past Projects";
+const section3Title = "Projects";
 const projects = [
   {
     // Add image in './styles/images.css' in #project1
@@ -128,24 +128,24 @@ const projects = [
 // Edit your Miscellaneous Activities, its name and the url.
 // You can omit freely anything if you dont have it
 // To Add a Activity, copy any one below and paste it after the last comma and increment the id's Miscellaneous number
-const section4Title = "Miscellaneous";
+const section4Title = "Failed Projects";
 const miscellaneous = [
   {
     // Add image in './styles/images.css' in #misc1
     id: "misc1",
-    name: "Miscellaneous 1",
+    name: "Testing long lines og names",
     url: "https://github.com/kaustubhai",
   },
   {
     // Add image in './styles/images.css' in #misc2
     id: "misc2",
-    name: "Miscellaneous 2",
+    name: "Failed Project 2",
     url: "https://github.com/kaustubhai",
   },
   {
     // Add image in './styles/images.css' in #misc3
     id: "misc3",
-    name: "Miscellaneous 3",
+    name: "Failed Project 3",
     url: "https://github.com/kaustubhai",
   },
 ];
@@ -155,19 +155,16 @@ const miscellaneous = [
 const section5Title = "Get in Touch";
 const contact = {
   pitch:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris nunc congue nisi vitae.",
-  copyright: "Kaustubh Mishra",
+    "Feel free to reach out to me for any web development project or collaboration. I'm excited to discuss ideas and bring them to life!",
+  copyright: "Mohammad Ali",
   contactUrl: "",
 };
 // Paste your respective social media links. You can omit any if you dont have it
 // Upload your resume in your drive, get the shaareable link and paste it in the resume section
 const social = {
-  github: "https://github.com",
-  facebook: "https://facebook.com",
-  // twitter: "https://twitter.com",
-  instagram: "https://instagram.com",
-  linkedin: "https://linkedin.com",
-  resume: "https://novoresume.com/",
+  github: "https://github.com/Mohammad-Ali-Rauf",
+  twitter: "https://twitter.com/MohammadAliRauf",
+  linkedin: "https://www.linkedin.com/in/mohammad-ali-40689121b/",
 };
 // Dont change anything here
 export {
