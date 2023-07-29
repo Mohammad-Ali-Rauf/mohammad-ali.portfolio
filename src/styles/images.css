@@ -10,35 +10,35 @@
     cursor: none;    
 }
 .project2{
-    background-image: url('https://via.placeholder.com/400x600.png?text=Project+two');
+    background-image: url('../assets/projects/quotes.png');
     cursor: none;
 }
 .project3{
-    background-image: url('https://via.placeholder.com/400x600.png?text=Project+three');
+    background-image: url('../assets/projects/seat-selector.png');
     cursor: none;
 }
 .project4{
-    background-image: url('https://via.placeholder.com/400x600.png?text=Project+four');
+    background-image: url('../assets/projects/form-validation.png');
     cursor: none;
 }
 .project5{
-    background-image: url('https://via.placeholder.com/400x600.png?text=Project+five');
+    background-image: url('../assets/projects/typing.png');
     cursor: none;
 }
 .project6{
-    background-image: url('https://via.placeholder.com/400x600.png?text=Project+six');
+    background-image: url('../assets/projects/video-chat.png');
     cursor: none;
 }
 /* Miscelaneous Activities photo */
 .misc1{
-    background-image: url('https://via.placeholder.com/400x600.png?text=Miscellaneous+one');
+    background-image: url('../assets/projects/crowdfunding.png');
     cursor: none;
 }
 .misc2{
-    background-image: url('https://via.placeholder.com/400x600.png?text=Miscellaneous+two');
+    background-image: url('../assets/projects/dark.png');
     cursor: none;
 }
 .misc3{
-    background-image: url('https://via.placeholder.com/400x600.png?text=Miscellaneous+three');
+    background-image: url('../assets/projects/logger.png');
     cursor: none;
 }

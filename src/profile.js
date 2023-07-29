@@ -84,7 +84,7 @@ const section3Title = "Projects";
 const projects = [
   {
     // Add image in './styles/images.css' in #project1
-    id: "1",
+    id: "project1",
     name: "GitHub Finder",
     skills: ["REACT JS, HTML, CSS"],
     url: "https://github.com/Mohammad-Ali-Rauf/Github-Finder",
@@ -92,37 +92,37 @@ const projects = [
   {
     // Add image in './styles/images.css' in #project2
     id: "project2",
-    name: "Project 2",
-    skills: ["HTML, CSS, JS"],
-    url: "https://github.com/kaustubhai",
+    name: "Random Quote Generator",
+    skills: ["REACT JS, HTML, BOOTSTRAP"],
+    url: "https://github.com/Mohammad-Ali-Rauf/random-quote-generator_reactjs",
   },
   {
     // Add image in './styles/images.css' in #project3
     id: "project3",
-    name: "Project 3",
+    name: "Movie Seat Selector",
     skills: ["HTML, CSS, JS"],
-    url: "https://github.com/kaustubhai",
+    url: "https://github.com/Mohammad-Ali-Rauf/Seat-Selector",
   },
   {
     // Add image in './styles/images.css' in #project4
     id: "project4",
-    name: "Project 4",
+    name: "HTML Form Validation",
     skills: ["HTML, CSS, JS"],
-    url: "https://github.com/kaustubhai",
+    url: "https://github.com/Mohammad-Ali-Rauf/html-form-validation",
   },
   {
     // Add image in './styles/images.css' in #project5
     id: "project5",
-    name: "Project 5",
+    name: "Fast Typing Game",
     skills: ["HTML, CSS, JS"],
-    url: "https://github.com/kaustubhai",
+    url: "https://github.com/Mohammad-Ali-Rauf/fast-typing_game",
   },
   {
     // Add image in './styles/images.css' in #project6
     id: "project6",
-    name: "Project 6",
-    skills: ["HTML, CSS, JS"],
-    url: "https://github.com/kaustubhai",
+    name: "Video Chat",
+    skills: ["HTML, REACT JS, MATERIAL UI"],
+    url: "https://github.com/Mohammad-Ali-Rauf/Video-Chat",
   },
 ];
 // Edit your Miscellaneous Activities, its name and the url.
@@ -133,20 +133,20 @@ const miscellaneous = [
   {
     // Add image in './styles/images.css' in #misc1
     id: "misc1",
-    name: "Testing long lines og names",
-    url: "https://github.com/kaustubhai",
+    name: "CrowdFunding For Campaigns",
+    url: "#",
   },
   {
     // Add image in './styles/images.css' in #misc2
     id: "misc2",
-    name: "Failed Project 2",
-    url: "https://github.com/kaustubhai",
+    name: "Dark Theme Toggler",
+    url: "#",
   },
   {
     // Add image in './styles/images.css' in #misc3
     id: "misc3",
-    name: "Failed Project 3",
-    url: "https://github.com/kaustubhai",
+    name: "IT Logger for Developers",
+    url: "#",
   },
 ];
 // Contact form text, and Formspree link(to send a submit contact through their API as in contact.js)
