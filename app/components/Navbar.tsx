@@ -36,17 +36,6 @@ const Navbar = () => {
 										Home
 									</Link>
 									<Link
-										href='/about'
-										prefetch
-										className={`${
-											pathname === '/about'
-												? 'border-teal-500 dark:text-white h-full inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
-												: 'border-transparent text-gray-500 dark:text-gray-300 dark:hover:text-white px-1 pt-1 border-b-2 text-sm font-medium'
-										}`}
-									>
-										About Me
-									</Link>
-									<Link
 										href='/projects'
 										prefetch
 										className={`${
@@ -112,17 +101,6 @@ const Navbar = () => {
 								}`}
 							>
 								Home
-							</Link>
-							<Link
-								href='/about'
-								prefetch
-								className={`${
-									pathname == '/about'
-										? 'bg-teal-50 border-teal-500 text-teal-500 block pl-3 pr-4 py-2 border-l-2 text-base font-medium dark:bg-gray-800'
-										: 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-white block pl-3 pr-4 py-2 dark:hover:bg-gray-700 text-base font-medium border-l-4'
-								}`}
-							>
-								About Me
 							</Link>
 							<Link
 								href='/projects'
