@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import Me from '@/public/my_photo.JPG'
+import Me from '../public/my_photo.jpg'
 
 export default function Home() {
 	return (
