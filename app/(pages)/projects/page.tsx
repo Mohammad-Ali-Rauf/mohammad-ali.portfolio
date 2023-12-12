@@ -15,23 +15,22 @@ interface Data {
 	imageUrl: string
 }
 
-async function getProjects() {
-	const query = groq`*[_type == "project"] {
-		title,
-		  overview,
-		  link,
-		  _id,
-		  skills,
-		  "imageUrl": image.asset->url
-	  }`
+// async function getProjects() {
+// 	const query = groq`*[_type == "project"] {
+// 		title,
+// 		  overview,
+// 		  link,
+// 		  _id,
+// 		  skills,
+// 		  "imageUrl": image.asset->url
+// 	  }`
 
-	const data = await client.fetch(query)
+// 	const data = await client.fetch(query)
 
-	return data
-}
+// 	return data
+// }
 
 const Projects = () => {
-	// const data: Data[] = await getProjects()
 
 	const [data, setData] = useState<Data[] | null>(null)
 
@@ -50,19 +49,17 @@ const Projects = () => {
 	}
 
 	useEffect(() => {
-		fetchData() // Fetch data initially
+		fetchData()
 
-		// Poll for data updates every 10 seconds
 		const intervalId = setInterval(() => {
 			fetchData()
 		}, 10000)
 
 		return () => {
-			clearInterval(intervalId) // Clean up interval when component is unmounted
+			clearInterval(intervalId)
 		}
 	}, [])
 
-	// console.log(data)
 	return (
 		<div className='divide-y divide-gray-200 dark:divide-gray-700'>
 			<div className='space-y-2 pt-6 pb-8 md:space-y-5'>
@@ -110,22 +107,3 @@ const Projects = () => {
 }
 
 export default Projects
-
-// export async function getStaticProps() {
-// 	const query = `*[_type == "project"] {
-// 		title,
-// 		  overview,
-// 		  link,
-// 		  _id,
-// 		  skills,
-// 		  "imageUrl": image.asset->url
-// 	  }`
-
-// 	const data = await client.fetch(query)
-
-// 	return {
-// 		props: {
-// 			data
-// 		}
-// 	}
-// }
