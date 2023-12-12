@@ -1,4 +1,5 @@
-import { client } from '@/app/lib/sanity'
+import { groq } from 'next-sanity'
+import { client } from '../../../app/lib/sanity'
 
 import Image from 'next/image'
 
@@ -12,12 +13,12 @@ interface Data {
 }
 
 async function getProjects() {
-	const query = `*[_type == "project"] {
+	const query = groq`*[_type == "project"] {
 		title,
 		  overview,
 		  link,
-		  skills,
 		  _id,
+		  skills,
 		  "imageUrl": image.asset->url
 	  }`
 
@@ -27,9 +28,10 @@ async function getProjects() {
 }
 
 const Projects = async () => {
+
 	const data: Data[] = await getProjects()
 
-	console.log(data)
+	// console.log(data)
 	return (
 		<div className='divide-y divide-gray-200 dark:divide-gray-700'>
 			<div className='space-y-2 pt-6 pb-8 md:space-y-5'>
@@ -60,7 +62,7 @@ const Projects = async () => {
 								</h3>
 							</a>
 
-							<h5 className='text-md font-medium text-gray-500 dark:text-white'>Skills Used: <span className='text-teal-500'>{project?.skills}</span></h5>
+							<h5 className='text-md font-medium text-gray-500 dark:text-white pt-2'>Skills Used: <span className='text-teal-500'>{project?.skills}</span></h5>
 
 							<p className='line-clamp-3 mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400'>
 								{project.overview}
@@ -74,3 +76,22 @@ const Projects = async () => {
 }
 
 export default Projects
+
+// export async function getStaticProps() {
+// 	const query = `*[_type == "project"] {
+// 		title,
+// 		  overview,
+// 		  link,
+// 		  _id,
+// 		  skills,
+// 		  "imageUrl": image.asset->url
+// 	  }`
+
+// 	const data = await client.fetch(query)
+
+// 	return {
+// 		props: {
+// 			data
+// 		}
+// 	}
+// }
