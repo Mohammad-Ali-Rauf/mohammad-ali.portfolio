@@ -24,9 +24,14 @@ export default {
             type: 'string',
         },
         {
-            name: 'link',
-            title: 'Link',
+            name: 'githubLink',
+            title: 'Github Code Link',
             type: 'string',
         },
+        {
+            name: 'demoLink',
+            title: 'Live Demo Link',
+            type: 'string',
+        }
     ],
 }
