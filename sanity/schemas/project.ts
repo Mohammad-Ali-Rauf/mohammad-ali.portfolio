@@ -21,7 +21,8 @@ export default {
         {
             name: 'skills',
             title: 'Skills Used',
-            type: 'string',
+            type: 'array',
+            of: [{ type: 'string' }]
         },
         {
             name: 'githubLink',

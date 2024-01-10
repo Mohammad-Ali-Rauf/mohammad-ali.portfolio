@@ -11,25 +11,10 @@ interface Data {
 	overview: string
 	githubLink: string
 	demoLink: string
-	skills: string
+	skills: Array<string>
 	_id: string
 	imageUrl: string
 }
-
-// async function getProjects() {
-// 	const query = groq`*[_type == "project"] {
-// 		title,
-// 		  overview,
-// 		  link,
-// 		  _id,
-// 		  skills,
-// 		  "imageUrl": image.asset->url
-// 	  }`
-
-// 	const data = await client.fetch(query)
-
-// 	return data
-// }
 
 const Projects = () => {
 	const [data, setData] = useState<Data[] | null>(null)
@@ -89,10 +74,24 @@ const Projects = () => {
 								{project.title}
 							</h3>
 
-							<h5 className='text-md font-medium text-gray-500 dark:text-white pt-2'>
-								Skills Used:{' '}
-								<span className='text-teal-500'>{project?.skills}</span>
-							</h5>
+							<div className='mb-2 mt-2'>
+								<div className='flex flex-wrap'>
+									{Array.isArray(project.skills) ? (
+										project.skills.map((skill, index) => (
+											<span
+												key={index}
+												className='bg-teal-500 text-white text-sm font-medium px-2.5 py-0.5 rounded mr-2 mb-2'
+											>
+												{skill}
+											</span>
+										))
+									) : (
+										<span className='bg-green-500 text-white text-sm font-medium px-2.5 py-0.5 rounded'>
+											{project.skills}
+										</span>
+									)}
+								</div>
+							</div>
 
 							<p className='line-clamp-3 mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400'>
 								{project.overview}
