@@ -118,7 +118,7 @@ const Projects = () => {
 										/>
 									</svg>
 								</a>
-								{project.demoLink && (
+								{project.demoLink ? (
 									<a
 										href={project.demoLink}
 										className='inline-flex p-3 text-lg rounded-lg dark:bg-teal-500 bg-gray-700 text-white'
@@ -139,6 +139,10 @@ const Projects = () => {
 											/>
 										</svg>
 									</a>
+								) : (
+									<span className='inline-flex p-3 text-lg rounded-lg dark:text-white dark:bg-red-500 bg-red-300 text-red-800'>
+										<span className='pr-2'>Not Available</span>
+									</span>
 								)}
 							</div>
 						</div>
