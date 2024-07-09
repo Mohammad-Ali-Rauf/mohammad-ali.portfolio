@@ -1,6 +1,6 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
-import Me from '../public/my_photo.jpg'
+import Me from '../public/my_photo.jpg';
 
 export default function Home() {
 	return (
@@ -63,23 +63,18 @@ export default function Home() {
 
 				<div className='prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2'>
 					<p>
-						As-salamu alaykum! I am Ali, a 14-year-old Full Stack Developer from
-						Pakistan. Despite my age, I am deeply immersed in the world of
-						technology, specializing in Reactjs/Nextjs for frontend development.
-						Now, let&apos;s delve into the technical details.
-					</p>
-					<p>
-						In the realm of frontend development, I&apos;ve honed my skills in
-						crafting captivating and user-friendly interfaces using Reactjs and
-						Nextjs. As I navigate the intricate web of technology, I&apos;m also
-						venturing into backend technologies, eager to broaden my expertise.
-						Simultaneously, my growing interest in DevOps reflects my commitment
-						to understanding the holistic process of software development. Join
-						me on this exciting journey as I seamlessly blend creativity with
-						code, aiming to leave a lasting mark on the digital landscape.
+						As-salamu alaykum! I&apos;m Mohammad Ali, I&apos;m{' '}
+						{new Date().getFullYear() - 2009} years old. I&apos;m into
+						full-stack development, which means I work on both front-end and
+						back-end of websites. I use Next.js and the MERN Stack for building
+						these. Right now, I&apos;m learning DevOps to understand how
+						software is made from start to finish. If you need help with your
+						project, especially in making advanced and ready-to-use systems,
+						feel free to contact me. I&apos;m here to give you clear advice and
+						solutions for your digital needs.
 					</p>
 				</div>
 			</div>
 		</div>
-	)
+	);
 }
