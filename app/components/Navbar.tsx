@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { Disclosure } from '@headlessui/react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import ThemeButton from './ThemeButton'
+import { Disclosure } from '@headlessui/react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import ThemeButton from './ThemeButton';
 
 const Navbar = () => {
-	let pathname = usePathname() || '/'
+	let pathname = usePathname() || '/';
 
 	return (
 		<Disclosure as='nav'>
@@ -37,7 +37,6 @@ const Navbar = () => {
 									</Link>
 									<Link
 										href='/projects'
-										prefetch
 										className={`${
 											pathname === '/projects'
 												? 'border-teal-500 dark:text-white h-full inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
@@ -45,6 +44,17 @@ const Navbar = () => {
 										}`}
 									>
 										Projects
+									</Link>
+									<Link
+										href='/experience'
+										prefetch
+										className={`${
+											pathname === '/experience'
+												? 'border-teal-500 dark:text-white h-full inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+												: 'border-transparent text-gray-500 dark:text-gray-300 dark:hover:text-white px-1 pt-1 border-b-2 text-sm font-medium'
+										}`}
+									>
+										Experience
 									</Link>
 									<ThemeButton />
 								</div>
@@ -104,7 +114,6 @@ const Navbar = () => {
 							</Link>
 							<Link
 								href='/projects'
-								prefetch
 								className={`${
 									pathname == '/projects'
 										? 'bg-teal-50 border-teal-500 text-teal-500 block pl-3 pr-4 py-2 border-l-2 text-base font-medium dark:bg-gray-800'
@@ -113,12 +122,23 @@ const Navbar = () => {
 							>
 								Projects
 							</Link>
+							<Link
+								href='/experience'
+								prefetch
+								className={`${
+									pathname === '/experience'
+										? 'border-teal-500 dark:text-white h-full inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+										: 'border-transparent text-gray-500 dark:text-gray-300 dark:hover:text-white px-1 pt-1 border-b-2 text-sm font-medium'
+								}`}
+							>
+								Experience
+							</Link>
 						</div>
 					</Disclosure.Panel>
 				</>
 			)}
 		</Disclosure>
-	)
-}
+	);
+};
 
-export default Navbar
+export default Navbar;

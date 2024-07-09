@@ -69,9 +69,8 @@ export default function Home() {
 						back-end of websites. I use Next.js and the MERN Stack for building
 						these. Right now, I&apos;m learning DevOps to understand how
 						software is made from start to finish. If you need help with your
-						project, especially in making advanced and ready-to-use systems,
-						feel free to contact me. I&apos;m here to give you clear advice and
-						solutions for your digital needs.
+						project, feel free to contact me. I&apos;m here to give you clear
+						advice and solutions for your digital needs.
 					</p>
 				</div>
 			</div>
