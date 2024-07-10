@@ -43,9 +43,10 @@ const Projects = () => {
 	}, [error]);
 
 	useEffect(() => {
+		fetchData()
 		const interval = setInterval(() => {
 			fetchData();
-		}, 20000);
+		}, 15000);
 
 		return () => clearInterval(interval);
 	}, [fetchData]);
