@@ -31,8 +31,6 @@ const Projects = () => {
       skills,
       "imageUrl": image.asset->url
     }`;
-
-		setLoading(true);
 		setError(null);
 
 		try {
@@ -41,13 +39,15 @@ const Projects = () => {
 		} catch (err) {
 			setError(err);
 			console.log(error);
-		} finally {
-			setLoading(false);
 		}
 	}, [error]);
 
 	useEffect(() => {
-		fetchData();
+		const interval = setInterval(() => {
+			fetchData();
+		}, 20000);
+
+		return () => clearInterval(interval);
 	}, [fetchData]);
 
 	return (
