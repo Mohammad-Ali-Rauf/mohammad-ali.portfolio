@@ -45,7 +45,7 @@ const Navbar = () => {
 									>
 										Projects
 									</Link>
-									<Link
+{/* 									<Link
 										href='/experience'
 										prefetch
 										className={`${
@@ -55,7 +55,7 @@ const Navbar = () => {
 										}`}
 									>
 										Experience
-									</Link>
+									</Link> */}
 									<ThemeButton />
 								</div>
 							</div>
