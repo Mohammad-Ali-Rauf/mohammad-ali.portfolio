@@ -6,7 +6,7 @@ import { client } from '../../../app/lib/sanity';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 
-interface Data {
+interface Project {
 	title: string;
 	overview: string;
 	githubLink: string;
@@ -17,8 +17,7 @@ interface Data {
 }
 
 const Projects = () => {
-	const [data, setData] = useState<Data[] | null>(null);
-	const [loading, setLoading] = useState(false);
+	const [data, setData] = useState<Project[] | null>(null);
 	const [error, setError] = useState<null | unknown>(null);
 
 	const fetchData = useCallback(async () => {
@@ -85,13 +84,13 @@ const Projects = () => {
 										project.skills.map((skill, index) => (
 											<span
 												key={index}
-												className='bg-teal-500 text-white text-sm font-medium px-2.5 py-0.5 rounded mr-2 mb-2'
+												className='bg-red-500 text-white text-sm font-medium px-2.5 py-0.5 rounded mr-2 mb-2'
 											>
 												{skill}
 											</span>
 										))
 									) : (
-										<span className='bg-green-500 text-white text-sm font-medium px-2.5 py-0.5 rounded'>
+										<span className='bg-red-500 text-white text-sm font-medium px-2.5 py-0.5 rounded'>
 											{project.skills}
 										</span>
 									)}
@@ -105,7 +104,7 @@ const Projects = () => {
 							<div className='pt-4 sm:pt-6 flex gap-6'>
 								<a
 									href={project.githubLink}
-									className='inline-flex p-3 text-lg rounded-lg dark:bg-teal-500 bg-gray-700 text-white'
+									className='inline-flex p-3 text-lg rounded-lg dark:bg-red-500 bg-gray-700 text-white'
 								>
 									<span className='pr-2'>Code</span>
 									<svg
@@ -126,7 +125,7 @@ const Projects = () => {
 								{project.demoLink ? (
 									<a
 										href={project.demoLink}
-										className='inline-flex p-3 text-lg rounded-lg dark:bg-teal-500 bg-gray-700 text-white'
+										className='inline-flex p-3 text-lg rounded-lg dark:bg-red-500 bg-gray-700 text-white'
 									>
 										<span className='pr-2'>Live</span>
 										<svg

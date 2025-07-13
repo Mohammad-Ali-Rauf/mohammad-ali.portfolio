@@ -1,8 +1,7 @@
-'use client';
-
 import { notFound } from 'next/navigation';
-import { reports } from '../index';
 import ReactMarkdown from 'react-markdown';
+import { groq } from 'next-sanity';
+import { client } from '@/app/lib/sanity';
 
 interface PageProps {
 	params: {
@@ -10,10 +9,18 @@ interface PageProps {
 	};
 }
 
-const ReportPage = ({ params }: PageProps) => {
-	const report = reports.find((r) => r.id === params.id);
+const ReportPage = async ({ params }: PageProps) => {
+	
+	const query = groq`*[_type == "report" && _id == $id][0] {
+		title,
+		_id,
+		skills,
+		content
+	}`;
+	const report = await client.fetch(query, { id: params.id });
 
 	if (!report) return notFound();
+
 
 	return (
 		<div className='py-8 max-w-4xl mx-auto px-4'>
