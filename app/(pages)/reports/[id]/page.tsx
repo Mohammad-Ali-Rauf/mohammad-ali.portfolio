@@ -29,9 +29,9 @@ const ReportPage = async ({ params }: PageProps) => {
 			</h1>
 
 			<div className='flex flex-wrap gap-2 mb-6'>
-				{report.skills.map((skill, idx) => (
+				{report.skills.map((skill: string, i) => (
 					<span
-						key={idx}
+						key={i}
 						className='bg-black text-white text-sm px-3 py-1 rounded'
 					>
 						{skill}
