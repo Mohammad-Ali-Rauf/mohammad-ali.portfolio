@@ -29,7 +29,7 @@ const ReportPage = async ({ params }: PageProps) => {
 			</h1>
 
 			<div className='flex flex-wrap gap-2 mb-6'>
-				{report.skills.map((skill: string, i) => (
+				{report.skills.map((skill: string, i: number) => (
 					<span
 						key={i}
 						className='bg-black text-white text-sm px-3 py-1 rounded'
