@@ -11,23 +11,7 @@ const Experience = (props: Props) => {
 				</h1>
 			</div>
 			<div className='space-y-8 py-8'>
-				<div className='border-l-4 border-teal-500 pl-6 ml-4 pb-6'>
-					<h2 className='text-2xl font-bold text-gray-900 dark:text-gray-100'>
-						Founder & CEO
-					</h2>
-					<span className='text-lg font-medium text-gray-700 dark:text-gray-300'>
-						Coodes
-					</span>
-					<p className='text-gray-600 dark:text-gray-400 mt-2'>
-						Leading the company in providing IT solutions tailored to client
-						needs using MERN stack and Next.js. Overseeing project development
-						and ensuring delivery of high-quality products.
-					</p>
-					<span className='text-sm text-gray-500 dark:text-gray-400 mt-1 block'>
-						June 2024 - Present
-					</span>
-				</div>
-				<div className='border-l-4 border-teal-500 pl-6 ml-4 pb-6'>
+				<div className='border-l-4 border-red-500 pl-6 ml-4 pb-6'>
 					<h2 className='text-2xl font-bold text-gray-900 dark:text-gray-100'>
 						Faculty Member
 					</h2>
@@ -39,10 +23,10 @@ const Experience = (props: Props) => {
 						fostering the next generation of tech talent.
 					</p>
 					<span className='text-sm text-gray-500 dark:text-gray-400 mt-1 block'>
-						February 2024 - Present
+						March 2024 - Feb 2025
 					</span>
 				</div>
-				<div className='border-l-4 border-teal-500 pl-6 ml-4 pb-6'>
+				<div className='border-l-4 border-red-500 pl-6 ml-4 pb-6'>
 					<h2 className='text-2xl font-bold text-gray-900 dark:text-gray-100'>
 						Back End Developer
 					</h2>
@@ -57,7 +41,7 @@ const Experience = (props: Props) => {
 						March 2024 - June 2024
 					</span>
 				</div>
-				<div className='border-l-4 border-teal-500 pl-6 ml-4 pb-6'>
+				<div className='border-l-4 border-red-500 pl-6 ml-4 pb-6'>
 					<h2 className='text-2xl font-bold text-gray-900 dark:text-gray-100'>
 						HTML and Bootstrap 5 Developer
 					</h2>

@@ -16,7 +16,7 @@ const ThemeButton = () => {
 	return (
 		<button
 			onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-			className='bg-teal-500/30 p-2 rounded-lg text-teal-500'
+			className='bg-red-500/30 p-2 rounded-lg text-red-500'
 		>
 			{resolvedTheme === 'dark' ? (
 				<svg
