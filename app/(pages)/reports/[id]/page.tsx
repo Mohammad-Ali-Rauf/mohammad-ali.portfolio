@@ -1,9 +1,10 @@
+export const dynamic = 'force-dynamic';
+
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import { groq } from 'next-sanity';
 import { client } from '@/app/lib/sanity';
 
-export const dynamic = 'force-dynamic';
 
 interface PageProps {
 	params: {
