@@ -1,8 +1,6 @@
 import React from 'react';
 
-type Props = {};
-
-const Experience = (props: Props) => {
+const Experience = () => {
 	return (
 		<div className='divide-y divide-gray-200 dark:divide-gray-700'>
 			<div className='space-y-2 pt-5 pb-8 md:space-y-5'>

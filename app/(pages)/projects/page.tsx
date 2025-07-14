@@ -1,10 +1,8 @@
-'use client';
-
 import { groq } from 'next-sanity';
 import { client } from '../../../app/lib/sanity';
+import imageUrlBuilder from '@sanity/image-url';
 
 import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
 
 interface Project {
 	title: string;
@@ -13,42 +11,32 @@ interface Project {
 	demoLink: string;
 	skills: Array<string>;
 	_id: string;
-	imageUrl: string;
+	image: any;
 }
 
-const Projects = () => {
-	const [data, setData] = useState<Project[] | null>(null);
-	const [error, setError] = useState<null | unknown>(null);
+const Projects = async () => {
 
-	const fetchData = useCallback(async () => {
-		const query = groq`*[_type == "project"] {
-      title,
-      overview,
-      githubLink,
-	  demoLink,
-      _id,
-      skills,
-      "imageUrl": image.asset->url
-    }`;
-		setError(null);
+	const builder = imageUrlBuilder(client);
 
-		try {
-			const newData = await client.fetch(query);
-			setData(newData);
-		} catch (err) {
-			setError(err);
-			console.log(error);
-		}
-	}, [error]);
+	function urlFor(source: any) {
+		return builder.image(source).width(500).height(300).fit('crop').url();
+	}
 
-	useEffect(() => {
-		fetchData()
-		const interval = setInterval(() => {
-			fetchData();
-		}, 15000);
+	async function getProjects(): Promise<Project[]> {
+		const query = groq`*[_type == "project"]{
+		title,
+		overview,
+		githubLink,
+		demoLink,
+		_id,
+		skills,
+		"image": image
+	}`;
 
-		return () => clearInterval(interval);
-	}, [fetchData]);
+		return await client.fetch(query, {}, { next: { revalidate: 60 } }); // cache for 60s
+	}
+
+	const data = await getProjects()
 
 	return (
 		<div className='divide-y divide-gray-200 dark:divide-gray-700'>
@@ -66,11 +54,13 @@ const Projects = () => {
 					>
 						<div className='h-56 w-full relative'>
 							<Image
+								src={urlFor(project.image)}
+								alt='Project'
 								fill
-								src={project.imageUrl}
-								alt='Image of the Project'
 								className='h-full w-full object-cover'
+								priority
 							/>
+
 						</div>
 
 						<div className='p-4 sm:p-6'>

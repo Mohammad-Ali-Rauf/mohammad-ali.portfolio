@@ -212,6 +212,11 @@
     event-source-polyfill "1.0.31"
     eventsource "2.0.2"
 
+"@sanity/image-url@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@sanity/image-url/-/image-url-1.1.0.tgz#f26905ef5bdd27165b0f04d8571eb75dc7cdf50a"
+  integrity sha512-JHumVRxzzaZAJyOimntdukA9TjjzsJiaiq/uUBdTknMLCNvtM6KQ5OCp6W5fIdY78uyFxtQjz+MPXwK8WBIxWg==
+
 "@sanity/preview-kit-compat@1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@sanity/preview-kit-compat/-/preview-kit-compat-1.2.2.tgz#4994106d646ed97a0acd1530fb872fd58f46f84c"

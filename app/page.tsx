@@ -1,8 +1,24 @@
 import Image from 'next/image';
+import Toolkit from './components/Toolkit';
 
 import Me from '../public/my_photo.jpg';
 
 export default function Home() {
+
+	const birthDate = new Date(2009, 7, 27);
+	const today = new Date();
+
+	let age = today.getFullYear() - birthDate.getFullYear();
+
+	const isBeforeBirthday =
+		today.getMonth() < birthDate.getMonth() ||
+		(today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate());
+
+	if (isBeforeBirthday) {
+		age--;
+	}
+
+
 	return (
 		<div className='divide-y divide-gray-100 dark:divide-gray-700'>
 			<div className='space-y-2 pt-5 pb-8 md:space-x-5'>
@@ -14,19 +30,22 @@ export default function Home() {
 			<div className='items-center space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0'>
 				<div className='flex flex-col items-center pt-8'>
 					<Image
-						alt='Picture of Mohammad Ali'
+						alt='Mohammad Ali — Red Team Operator'
 						src={Me}
 						className='h-48 w-48 rounded-full object-cover object-top border-red-600 border-4'
+						priority
 					/>
 					<h3 className='pt-4 pb-3 text-3xl font-bold leading-8 tracking-tight'>
 						Mohammad Ali
 					</h3>
-					<p className='text-red-500 dark:text-gray-300 text-center p-2 rounded-md border border-red-600'>
+					<p className='text-xs uppercase tracking-widest text-red-500 border border-red-600 px-2 py-0.5 rounded-md'>
 						Red Team Operator
 					</p>
 
+
 					<div className='flex space-x-5 pt-6'>
-						<a href='https://github.com/Mohammad-Ali-Rauf' target='_blank' rel='noopener noreferrer'>
+						<a href='https://github.com/Mohammad-Ali-Rauf' aria-label='GitHub Profile'
+							target='_blank' rel='noopener noreferrer'>
 							<svg
 								viewBox='0 0 1024 1024'
 								fill='currentColor'
@@ -39,6 +58,8 @@ export default function Home() {
 							href='https://www.linkedin.com/in/mohammad-ali-40689121b/'
 							target='_blank'
 							rel='noopener noreferrer'
+							aria-label='LinkedIn Profile'
+
 						>
 							<svg
 								viewBox='0 0 1024 1024'
@@ -50,18 +71,20 @@ export default function Home() {
 						</a>
 					</div>
 				</div>
-
-				<div className='prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2'>
+				<article className='prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2'>
 					<p>
-						As-salamu alaykum! I&apos;m <span className='text-green-400'>Mohammad Ali</span>, and I&apos;m{' '}
-						{new Date().getFullYear() - 2009} years old. I specialize in <span className='text-red-500'>Red Teaming</span>,
-						which means I break software and digital systems — before you call the cops, maybe get to know me first.
-						I use <strong className='bg-gray-100 dark:bg-gray-800 text-emerald-600 px-1 p-1 rounded font-mono text-sm'>Debian</strong> as my primary and <strong className='bg-gray-100 dark:bg-gray-800 text-red-600 px-1 p-1 rounded font-mono text-sm'>RHEL</strong> as my secondary OS, and I work with <strong className='bg-gray-100 dark:bg-gray-800 text-cyan-600 px-1 p-1 rounded font-mono text-sm'>Golang</strong>, <strong className='bg-gray-100 dark:bg-gray-800 text-orange-600 px-1 p-1 rounded font-mono text-sm'>Rust</strong>, and <strong className='bg-gray-100 dark:bg-gray-800 dark:text-white text-gray-600 px-1 p-1 rounded font-mono text-sm'>Sliver</strong>.
-						Right now, I&apos;m diving into the <strong className='text-purple-500'>Cyber Kill Chain</strong> to understand how software is compromised from recon to exploitation.
-						If you need help with a project, reach out — I offer clear, actionable solutions for your digital security needs.
+						As-salamu alaykum! I&apos;m <span className='text-green-400'>Mohammad Ali</span>, a {age}-year-old specializing in{"  "}
+						<span className='text-red-500'>Red Teaming</span> — I break software, systems, and assumptions.
+						Don&apos;t call the cops just yet — I &quot;simulate&quot; real-world attacks to strengthen digital security.
+						Currently exploring the
+						<strong className='text-purple-500'> Cyber Kill Chain</strong> — mastering the path from recon to exploitation.
+						<br className='hidden sm:block' />
+						<br className='hidden sm:block' />
+						Let&apos;s talk... before the guy in the hoodie beats you to it.
 					</p>
 
-				</div>
+					<Toolkit />
+				</article>
 			</div>
 		</div>
 	);

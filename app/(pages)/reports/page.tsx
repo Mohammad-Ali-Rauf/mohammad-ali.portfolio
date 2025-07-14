@@ -1,50 +1,31 @@
-'use client';
+// NO 'use client' here 😎
 
 import Link from 'next/link';
 import { groq } from 'next-sanity';
 import { client } from '../../../app/lib/sanity';
 
-import { useCallback, useEffect, useState } from 'react';
-
 interface Report {
 	title: string;
 	content: string;
-	skills: Array<string>;
+	skills: string[];
 	_id: string;
 }
 
-const Reports = () => {
-	const [data, setData] = useState<Report[] | null>(null);
-	const [error, setError] = useState<null | unknown>(null);
-
-	const fetchData = useCallback(async () => {
-		const query = groq`*[_type == "report"] {
-      title,
-      _id,
-      skills,
-      content
-    }`;
-		setError(null);
-
-		try {
-			const newData = await client.fetch(query);
-			setData(newData);
-		} catch (err) {
-			setError(err);
-			console.log(error);
-		}
-	}, [error]);
-
-
-	useEffect(() => {
-		fetchData()
-		const interval = setInterval(() => {
-			fetchData();
-		}, 15000);
-
-		return () => clearInterval(interval);
-	}, [fetchData]);
+async function getReports(): Promise<Report[]> {
+	const query = groq`*[_type == "report"] {
+		title,
+		_id,
+		skills,
+		content
+	}`;
 	
+	// ISR cache - change '60' to whatever fits your content update cycle
+	return client.fetch(query, {}, { next: { revalidate: 60 } });
+}
+
+export default async function Reports() {
+	const data = await getReports();
+
 	return (
 		<div className='divide-y divide-gray-200 dark:divide-gray-700'>
 			<div className='space-y-2 pt-6 pb-8 md:space-y-5'>
@@ -54,7 +35,7 @@ const Reports = () => {
 			</div>
 
 			<div className='grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-10 pt-8 pb-8'>
-				{data?.map((report) => (
+				{data.map((report) => (
 					<Link href={`/reports/${report._id}`} key={report._id}>
 						<article className='cursor-pointer hover:shadow-xl transition-all duration-200 overflow-hidden dark:border-zinc-600 rounded-lg border-4 border-red-300 bg-white shadow-md dark:shadow-gray-700 dark:bg-black shadow-teal-100'>
 							<div className='p-4 sm:p-6'>
@@ -79,6 +60,4 @@ const Reports = () => {
 			</div>
 		</div>
 	);
-};
-
-export default Reports;
+}
