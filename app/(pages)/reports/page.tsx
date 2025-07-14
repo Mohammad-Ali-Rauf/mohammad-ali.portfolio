@@ -1,5 +1,3 @@
-// NO 'use client' here 😎
-
 import Link from 'next/link';
 import { groq } from 'next-sanity';
 import { client } from '../../../app/lib/sanity';
@@ -19,7 +17,6 @@ async function getReports(): Promise<Report[]> {
 		content
 	}`;
 	
-	// ISR cache - change '60' to whatever fits your content update cycle
 	return client.fetch(query, {}, { next: { revalidate: 60 } });
 }
 
