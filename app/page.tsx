@@ -77,7 +77,7 @@ export default function Home() {
 						<span className='text-red-500'>Red Teaming</span> — I break software, systems, and assumptions.
 						Don&apos;t call the cops just yet — I &quot;simulate&quot; real-world attacks to strengthen digital security.
 						Currently exploring the
-						<strong className='text-purple-500'> Cyber Kill Chain</strong> — mastering the path from recon to exploitation.
+						<strong className='text-purple-500'> Cyber Kill Chain</strong> — mastering the path from <span className='italic text-red-500 dark:text-white dark:font-bold'>recon</span> to <span className='italic dark:font-bold text-red-500 dark:text-white'>actions on objectives</span>.
 						<br className='hidden sm:block' />
 						<br className='hidden sm:block' />
 						Let&apos;s talk... before the guy in the hoodie beats you to it.

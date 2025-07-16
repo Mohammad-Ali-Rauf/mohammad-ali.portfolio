@@ -10,7 +10,7 @@ export default function Toolkit() {
 
 	return (
 		<div>
-			<h3 className='text-xl mb-2'>Toolkit</h3>
+			<h3 className='text-xl mb-2'>My Weapons</h3>
 			<div className='flex flex-wrap gap-2'>
 				{tools.map(({ name, color }, i) => (
 					<span
