@@ -72,12 +72,14 @@ export default function Home() {
 					</div>
 				</div>
 				<article className='prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2'>
-					<p>
-						As-salamu alaykum! I&apos;m <span className='text-green-400'>Mohammad Ali</span>, a {age}-year-old specializing in{"  "}
-						<span className='text-red-500'>Red Teaming</span> — I break software, systems, and assumptions.
-						Don&apos;t call the cops just yet — I &quot;simulate&quot; real-world attacks to strengthen digital security.
-						Currently exploring the
-						<strong className='text-purple-500'> Cyber Kill Chain</strong> — mastering the path from <span className='italic text-red-500 dark:text-white dark:font-bold'>recon</span> to <span className='italic dark:font-bold text-red-500 dark:text-white'>actions on objectives</span>.
+					<p className='text-lg leading-relaxed text-gray-700 dark:text-gray-300'>
+						<span className='text-xl font-semibold text-red-500'>As-salamu alaykum!</span> I&apos;m <span className='text-green-400 font-bold'>Mohammad Ali</span>, and I&apos;m {age}. I specialize in <span className='text-red-500 font-medium'>Red Teaming</span>, which means I plan, code, build, test, deploy, operate and monitor applications then <span className='font-bold text-red-600'>BREAK</span> them.
+
+						I started Development at <span className='font-semibold text-black dark:text-green-300'>age 9</span>, learning how software is built. At 13, I learned Docker and Kubernetes — entering the world of systems. Now, at 15, I committed to <span className='text-red-500 font-bold'>Red Teaming</span>, meanwhile still improving my <span className='text-blue-500 font-semibold'>Development</span> and <span className='text-orange-400'>Operations</span> skillset.
+
+						<br />
+						<br />
+						<span className='font-bold text-gray-900 dark:text-white'>The result?</span> I understand the <span className='underline decoration-dotted decoration-red-500'>entire <span className='text-blue-500'>Dev</span><span className='text-purple-500'>Sec</span><span className='text-orange-400'>Ops</span> lifecycle</span> — which is my <span className='text-black dark:text-red-400 font-extrabold tracking-wide'>unique advantage</span>.
 					</p>
 
 					<Toolkit />
