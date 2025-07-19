@@ -6,7 +6,7 @@ export default function Toolkit() {
 		{ name: 'TypeScript', color: 'text-blue-600' },
 		{ name: 'Docker', color: 'text-blue-700' },
 		{ name: 'Kubernetes', color: 'text-cyan-800' },
-		{ name: 'Google Cloud', color: 'text-yellow-600' },
+		{ name: 'AWS', color: 'text-yellow-600' },
 		{ name: 'Sliver', color: 'text-gray-600 dark:text-white' },
 	];
 
