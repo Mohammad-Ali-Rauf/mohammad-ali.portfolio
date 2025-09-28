@@ -1,59 +1,132 @@
 import React from 'react';
 
 const Experience = () => {
+	const experiences = [
+		{
+			title: "Faculty Member",
+			company: "Governor Initiative for AI and Computing (GIAIC)",
+			period: "March 2024 - May 2025",
+			description: "Teaching and developing curriculum for software development and computing courses, focusing on practical skills and real-world applications. Mentoring students in their journey to become the next generation of tech talent.",
+			skills: ["Teaching", "Curriculum Development", "Mentoring"],
+			type: "Education"
+		},
+		{
+			title: "Back End Developer",
+			company: "Programmiers",
+			period: "March 2024 - June 2024",
+			description: "Developed scalable server-side applications and APIs. Focused on creating efficient, maintainable code and implementing best practices in backend architecture and database design.",
+			skills: ["Node.js", "API Development", "Database Design", "System Architecture"],
+			type: "Development"
+		},
+		{
+			title: "Frontend Developer",
+			company: "PearlQuest Interactive", 
+			period: "June 2023",
+			description: "Created responsive and accessible web interfaces using modern HTML and Bootstrap 5. Focused on user experience and cross-browser compatibility while maintaining clean, semantic code.",
+			skills: ["HTML5", "Bootstrap 5", "Responsive Design", "UI/UX"],
+			type: "Development"
+		}
+	];
+
+	const getTypeColor = (type: string) => {
+		switch (type) {
+			case "Education":
+				return "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 border-blue-200 dark:border-blue-800";
+			case "Development":
+				return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border-green-200 dark:border-green-800";
+			default:
+				return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300 border-gray-200 dark:border-gray-700";
+		}
+	};
+
 	return (
-		<div className='divide-y divide-gray-200 dark:divide-gray-700'>
-			<div className='space-y-2 pt-5 pb-8 md:space-y-5'>
-				<h1 className='text-4xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-white sm:text-5xl sm:leading-10 md:text-6xl md:leading-14'>
+		<div className='space-y-8 pt-6 pb-8'>
+			<div className='space-y-4'>
+				<h1 className='text-4xl font-bold leading-tight text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl'>
 					Experience
 				</h1>
+				<p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl'>
+					My journey through different roles in tech, from development to education. 
+					Each experience has helped shape my understanding of technology and security.
+				</p>
 			</div>
-			<div className='space-y-8 py-8'>
-				<div className='border-l-4 border-red-500 pl-6 ml-4 pb-6'>
-					<h2 className='text-2xl font-bold text-gray-900 dark:text-gray-100'>
-						Faculty Member
-					</h2>
-					<span className='text-lg font-medium text-gray-700 dark:text-gray-300'>
-						Governor Initiative for AI and Computing (GIAIC)
-					</span>
-					<p className='text-gray-600 dark:text-gray-400 mt-2'>
-						Teaching and developing curriculum for AI and computing courses,
-						fostering the next generation of tech talent.
-					</p>
-					<span className='text-sm text-gray-500 dark:text-gray-400 mt-1 block'>
-						March 2024 - Feb 2025
-					</span>
-				</div>
-				<div className='border-l-4 border-red-500 pl-6 ml-4 pb-6'>
-					<h2 className='text-2xl font-bold text-gray-900 dark:text-gray-100'>
-						Back End Developer
-					</h2>
-					<span className='text-lg font-medium text-gray-700 dark:text-gray-300'>
-						Programmiers
-					</span>
-					<p className='text-gray-600 dark:text-gray-400 mt-2'>
-						Worked on backend development projects, focusing on creating
-						efficient and scalable server-side applications.
-					</p>
-					<span className='text-sm text-gray-500 dark:text-gray-400 mt-1 block'>
-						March 2024 - June 2024
-					</span>
-				</div>
-				<div className='border-l-4 border-red-500 pl-6 ml-4 pb-6'>
-					<h2 className='text-2xl font-bold text-gray-900 dark:text-gray-100'>
-						HTML and Bootstrap 5 Developer
-					</h2>
-					<span className='text-lg font-medium text-gray-700 dark:text-gray-300'>
-						PearlQuest Interactive
-					</span>
-					<p className='text-gray-600 dark:text-gray-400 mt-2'>
-						Developed responsive web pages and interfaces using HTML and
-						Bootstrap 5.
-					</p>
-					<span className='text-sm text-gray-500 dark:text-gray-400 mt-1 block'>
-						June 2023
-					</span>
-				</div>
+
+			<div className='space-y-8 pt-8'>
+				{experiences.map((exp, index) => (
+					<div
+						key={index}
+						className='group relative overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/5 hover:-translate-y-1'
+					>
+						{/* Timeline indicator */}
+						<div className='absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-red-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+						
+						<div className='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4'>
+							<div className='flex-1 space-y-4'>
+								{/* Header */}
+								<div className='space-y-2'>
+									<div className='flex flex-wrap items-center gap-3'>
+										<h3 className='text-2xl font-bold text-gray-900 dark:text-white group-hover:text-red-600 transition-colors'>
+											{exp.title}
+										</h3>
+										<span className={`px-3 py-1 text-sm font-medium rounded-full border ${getTypeColor(exp.type)}`}>
+											{exp.type}
+										</span>
+									</div>
+									
+									<div className='flex flex-wrap items-center gap-2 text-lg'>
+										<span className='font-medium text-gray-700 dark:text-gray-300'>
+											{exp.company}
+										</span>
+										<span className='text-gray-400'>•</span>
+										<span className='text-red-600 dark:text-red-400 font-medium'>
+											{exp.period}
+										</span>
+									</div>
+								</div>
+
+								{/* Description */}
+								<p className='text-gray-600 dark:text-gray-300 leading-relaxed text-lg'>
+									{exp.description}
+								</p>
+
+								{/* Skills */}
+								<div className='flex flex-wrap gap-2 pt-2'>
+									{exp.skills.map((skill, skillIndex) => (
+										<span
+											key={skillIndex}
+											className='px-3 py-1.5 text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg border border-gray-200 dark:border-gray-700 transition-colors group-hover:border-red-200 group-hover:dark:border-red-800'
+										>
+											{skill}
+										</span>
+									))}
+								</div>
+							</div>
+
+							{/* Visual indicator for timeline */}
+							<div className='flex lg:flex-col items-center gap-4 lg:gap-2 lg:pl-6 lg:border-l lg:border-gray-200 lg:dark:border-gray-800'>
+								<div className='w-3 h-3 rounded-full bg-red-500 border-4 border-white dark:border-gray-900 shadow-lg' />
+								<span className='text-sm text-gray-500 dark:text-gray-400 font-medium lg:text-center min-w-[120px]'>
+									{exp.period.split(' - ')[0]}
+								</span>
+							</div>
+						</div>
+
+						{/* Hover effect background */}
+						<div className='absolute inset-0 bg-gradient-to-r from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none' />
+					</div>
+				))}
+			</div>
+
+			{/* Learning Journey Section */}
+			<div className='mt-16 p-8 rounded-2xl bg-gradient-to-r from-gray-50 to-red-50 dark:from-gray-900/50 dark:to-red-900/20 border border-gray-200 dark:border-gray-800'>
+				<h3 className='text-2xl font-bold text-gray-900 dark:text-white mb-4'>
+					Continuous Learning
+				</h3>
+				<p className='text-gray-600 dark:text-gray-300 leading-relaxed text-lg'>
+					Beyond formal roles, I'm constantly exploring new technologies and security concepts. 
+					Currently diving deeper into red team operations, cloud security, and advanced penetration testing techniques. 
+					Every project and learning opportunity helps me better understand how to build—and break—secure systems.
+				</p>
 			</div>
 		</div>
 	);

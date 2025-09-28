@@ -116,40 +116,40 @@ const Navbar = () => {
 								href='/'
 								prefetch
 								className={`${
-									pathname == '/'
-										? 'bg-red-50 border-red-500 text-red-500 block pl-3 pr-4 py-2 border-l-2 text-base font-medium dark:bg-gray-800'
-										: 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-white block pl-3 pr-4 py-2 dark:hover:bg-gray-700 text-base font-medium border-l-4'
-								}`}
+  pathname == '/'
+    ? 'bg-red-50 border-red-500 text-red-500 block pl-3 pr-4 py-2 border-l-2 text-base font-medium dark:bg-gray-800'
+    : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-900 block pl-3 pr-4 py-2 dark:hover:bg-gray-700 dark:text-gray-300 dark:hover:text-white text-base font-medium border-l-4'
+}`}
 							>
 								Home
 							</Link>
 							<Link
 								href='/projects'
 								className={`${
-									pathname == '/projects'
-										? 'bg-red-50 border-red-500 text-red-500 block pl-3 pr-4 py-2 border-l-2 text-base font-medium dark:bg-gray-800'
-										: 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-white block pl-3 pr-4 py-2 dark:hover:bg-gray-700 text-base font-medium border-l-4'
-								}`}
+  pathname == '/'
+    ? 'bg-red-50 border-red-500 text-red-500 block pl-3 pr-4 py-2 border-l-2 text-base font-medium dark:bg-gray-800'
+    : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-900 block pl-3 pr-4 py-2 dark:hover:bg-gray-700 dark:text-gray-300 dark:hover:text-white text-base font-medium border-l-4'
+}`}
 							>
 								Projects
 							</Link>
 							<Link
 								href='/experience'
 								className={`${
-									pathname == '/experience'
-										? 'bg-red-50 border-red-500 text-red-500 block pl-3 pr-4 py-2 border-l-2 text-base font-medium dark:bg-gray-800'
-										: 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-white block pl-3 pr-4 py-2 dark:hover:bg-gray-700 text-base font-medium border-l-4'
-								}`}
+  pathname == '/'
+    ? 'bg-red-50 border-red-500 text-red-500 block pl-3 pr-4 py-2 border-l-2 text-base font-medium dark:bg-gray-800'
+    : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-900 block pl-3 pr-4 py-2 dark:hover:bg-gray-700 dark:text-gray-300 dark:hover:text-white text-base font-medium border-l-4'
+}`}
 							>
 								Experience
 							</Link>
 							<Link
 								href='/reports'
 								className={`${
-									pathname == '/reports'
-										? 'bg-red-50 border-red-500 text-red-500 block pl-3 pr-4 py-2 border-l-2 text-base font-medium dark:bg-gray-800'
-										: 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-white block pl-3 pr-4 py-2 dark:hover:bg-gray-700 text-base font-medium border-l-4'
-								}`}
+  pathname == '/'
+    ? 'bg-red-50 border-red-500 text-red-500 block pl-3 pr-4 py-2 border-l-2 text-base font-medium dark:bg-gray-800'
+    : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-900 block pl-3 pr-4 py-2 dark:hover:bg-gray-700 dark:text-gray-300 dark:hover:text-white text-base font-medium border-l-4'
+}`}
 							>
 								Reports
 							</Link>

@@ -15,127 +15,132 @@ interface Project {
 }
 
 const Projects = async () => {
-
 	const builder = imageUrlBuilder(client);
 
 	function urlFor(source: any) {
-		return builder.image(source).width(500).height(300).fit('crop').url();
+		return builder.image(source).width(600).height(400).fit('crop').url();
 	}
 
 	async function getProjects(): Promise<Project[]> {
 		const query = groq`*[_type == "project"]{
-		title,
-		overview,
-		githubLink,
-		demoLink,
-		_id,
-		skills,
-		"image": image
-	}`;
+			title,
+			overview,
+			githubLink,
+			demoLink,
+			_id,
+			skills,
+			"image": image
+		}`;
 
-		return await client.fetch(query, {}, { next: { revalidate: 60 } }); // cache for 60s
+		return await client.fetch(query, {}, { next: { revalidate: 60 } });
 	}
 
 	const data = await getProjects()
 
 	return (
-		<div className='divide-y divide-gray-200 dark:divide-gray-700'>
-			<div className='space-y-2 pt-6 pb-8 md:space-y-5'>
-				<h1 className='text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14'>
+		<div className='divide-y divide-gray-200 dark:divide-gray-800'>
+			<div className='space-y-4 pt-6 pb-8'>
+				<h1 className='text-4xl font-bold leading-tight text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl'>
 					Projects
 				</h1>
+				<p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl'>
+					A collection of security tools, research projects, and applications I've built to explore offensive security and system design.
+				</p>
 			</div>
 
-			<div className='grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-10 pt-8 pb-8'>
-				{data?.map((project) => (
+			<div className='grid gap-8 pt-8 pb-8'>
+				{data?.map((project, index) => (
 					<article
 						key={project._id}
-						className='overflow-hidden dark:border-zinc-600 rounded-lg border border-gray-100 bg-white shadow-md dark:shadow-gray-700 dark:bg-black shadow-teal-100'
+						className={`group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/10 hover:-translate-y-1 ${
+							index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+						} lg:flex lg:items-stretch lg:gap-8`}
 					>
-						<div className='h-56 w-full relative'>
+						{/* Project Image */}
+						<div className='relative h-64 lg:h-auto lg:w-1/2 overflow-hidden'>
 							<Image
 								src={urlFor(project.image)}
-								alt='Project'
+								alt={project.title}
 								fill
-								className='h-full w-full object-cover'
-								priority
+								className='object-cover transition-transform duration-500 group-hover:scale-105'
+								priority={index < 2}
 							/>
-
+							<div className='absolute inset-0 bg-gradient-to-r from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
 						</div>
 
-						<div className='p-4 sm:p-6'>
-							<h3 className='text-lg font-medium text-gray-900 dark:text-white'>
-								{project.title}
-							</h3>
+						{/* Project Content */}
+						<div className='lg:w-1/2 p-6 lg:p-8 flex flex-col justify-between'>
+							<div>
+								<h3 className='text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-red-600 transition-colors'>
+									{project.title}
+								</h3>
 
-							<div className='mb-2 mt-2'>
-								<div className='flex flex-wrap'>
-									{Array.isArray(project.skills) ? (
-										project.skills.map((skill, index) => (
-											<span
-												key={index}
-												className='bg-red-500 text-white text-sm font-medium px-2.5 py-0.5 rounded mr-2 mb-2'
-											>
-												{skill}
+								{/* Skills Tags */}
+								<div className='mb-4'>
+									<div className='flex flex-wrap gap-2'>
+										{Array.isArray(project.skills) ? (
+											project.skills.map((skill, index) => (
+												<span
+													key={index}
+													className='px-3 py-1 text-xs font-medium bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full border border-red-200 dark:border-red-800'
+												>
+													{skill}
+												</span>
+											))
+										) : (
+											<span className='px-3 py-1 text-xs font-medium bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full border border-red-200 dark:border-red-800'>
+												{project.skills}
 											</span>
-										))
-									) : (
-										<span className='bg-red-500 text-white text-sm font-medium px-2.5 py-0.5 rounded'>
-											{project.skills}
-										</span>
-									)}
+										)}
+									</div>
 								</div>
+
+								<p className='text-gray-600 dark:text-gray-300 leading-relaxed mb-6 line-clamp-4'>
+									{project.overview}
+								</p>
 							</div>
 
-							<p className='line-clamp-3 mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400'>
-								{project.overview}
-							</p>
-
-							<div className='pt-4 sm:pt-6 flex gap-6'>
+							{/* Action Buttons */}
+							<div className='flex gap-4'>
 								<a
 									href={project.githubLink}
-									className='inline-flex p-3 text-lg rounded-lg dark:bg-red-500 bg-gray-700 text-white'
+									className='inline-flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-gray-800 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors group/btn'
+									target='_blank'
+									rel='noopener noreferrer'
 								>
-									<span className='pr-2'>Code</span>
 									<svg
-										xmlns='http://www.w3.org/2000/svg'
-										fill='none'
+										className='w-4 h-4 group-hover/btn:scale-110 transition-transform'
+										fill='currentColor'
 										viewBox='0 0 24 24'
-										strokeWidth={1.5}
-										stroke='currentColor'
-										className='w-6 h-6'
 									>
-										<path
-											strokeLinecap='round'
-											strokeLinejoin='round'
-											d='M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5'
-										/>
+										<path d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z'/>
 									</svg>
+									Code
 								</a>
+								
 								{project.demoLink ? (
 									<a
 										href={project.demoLink}
-										className='inline-flex p-3 text-lg rounded-lg dark:bg-red-500 bg-gray-700 text-white'
+										className='inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors group/btn'
+										target='_blank'
+										rel='noopener noreferrer'
 									>
-										<span className='pr-2'>Live</span>
 										<svg
-											xmlns='http://www.w3.org/2000/svg'
+											className='w-4 h-4 group-hover/btn:scale-110 transition-transform'
 											fill='none'
-											viewBox='0 0 24 24'
-											strokeWidth={1.5}
 											stroke='currentColor'
-											className='w-6 h-6'
+											viewBox='0 0 24 24'
 										>
-											<path
-												strokeLinecap='round'
-												strokeLinejoin='round'
-												d='M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418'
-											/>
+											<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14' />
 										</svg>
+										Live Demo
 									</a>
 								) : (
-									<span className='inline-flex p-3 text-lg rounded-lg dark:text-white dark:bg-red-500 bg-red-300 text-red-800'>
-										<span className='pr-2'>Not Available</span>
+									<span className='inline-flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-lg cursor-not-allowed'>
+										<svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+											<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' />
+										</svg>
+										Private
 									</span>
 								)}
 							</div>
