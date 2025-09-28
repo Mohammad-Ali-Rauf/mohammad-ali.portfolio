@@ -44,7 +44,7 @@ const Projects = async () => {
 					Projects
 				</h1>
 				<p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl'>
-					A collection of security tools, research projects, and applications I've built to explore offensive security and system design.
+					A collection of security tools, research projects, and applications I&apos;ve built to explore offensive security and system design.
 				</p>
 			</div>
 
