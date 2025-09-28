@@ -34,8 +34,7 @@ export default async function Home() {
       {/* Header Section */}
       <div className='space-y-4'>
         <h1 className='text-4xl font-bold leading-tight text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl'>
-          Red Team Operator &<br />
-          <span className='text-red-600'>Security Researcher</span>
+          Home
         </h1>
         <p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl'>
           Exploring offensive security, breaking systems to understand how to better protect them, 
@@ -59,7 +58,6 @@ export default async function Home() {
                   className='h-40 w-40 rounded-full object-cover object-top border-2 border-red-600 transition-transform duration-300 group-hover:scale-105'
                   priority
                 />
-                <div className='absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white dark:border-gray-900 rounded-full'></div>
               </div>
 
               {/* Profile Info */}
