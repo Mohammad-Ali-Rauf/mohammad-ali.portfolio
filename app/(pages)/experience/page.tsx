@@ -1,5 +1,6 @@
 import React from 'react'
 import { getExperiences } from '../../lib/data'
+import type { Experience } from '@/app/lib/experience'
 
 const Experience = async () => {
   const experiences = await getExperiences()
@@ -30,7 +31,7 @@ const Experience = async () => {
       </div>
 
       <div className='space-y-8 pt-8'>
-        {experiences?.map((exp, index) => (
+        {experiences?.map((exp: Experience, index: number) => (
           <div
             key={index}
             className='group relative overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/5 hover:-translate-y-1'
