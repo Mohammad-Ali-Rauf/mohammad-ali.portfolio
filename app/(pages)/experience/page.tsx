@@ -103,7 +103,7 @@ const Experience = async () => {
           Continuous Learning
         </h3>
         <p className='text-gray-600 dark:text-gray-300 leading-relaxed text-lg'>
-          Beyond formal roles, I'm constantly exploring new technologies and security concepts. 
+          Beyond formal roles, I&apos;m constantly exploring new technologies and security concepts. 
           Currently diving deeper into red team operations, cloud security, and advanced penetration testing techniques. 
           Every project and learning opportunity helps me better understand how to build—and break—secure systems.
         </p>
