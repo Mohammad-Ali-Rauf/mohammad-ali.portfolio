@@ -1,3 +1,4 @@
+
 export default {
     name: 'project',
     title: 'Project',
@@ -33,6 +34,34 @@ export default {
             name: 'demoLink',
             title: 'Live Demo Link',
             type: 'string',
+        },
+        {
+            name: 'category',
+            title: 'Project Category',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'Featured', value: 'featured' },
+                    { title: 'Experimental', value: 'experimental' }
+                ],
+                layout: 'radio'
+            },
+            initialValue: 'experimental'
+        },
+        {
+            name: 'status',
+            title: 'Project Status',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'Live', value: 'live' },
+                    { title: 'Under Maintenance', value: 'maintenance' },
+                    { title: 'Archived', value: 'archived' }
+                ],
+                layout: 'radio'
+            },
+            initialValue: 'live',
+            hidden: ({ document }: { document: { category?: string } }) => document?.category !== 'featured' // Only show for featured projects
         }
     ],
 }
