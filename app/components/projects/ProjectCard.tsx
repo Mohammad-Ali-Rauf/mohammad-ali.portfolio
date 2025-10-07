@@ -10,12 +10,12 @@ import { urlFor } from "@/app/lib/data";
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => (
     <article
-        className={`group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/10 hover:-translate-y-1 ${
-            index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-        } lg:flex lg:items-stretch lg:gap-8`}
+        className={`group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/10 hover:-translate-y-1 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+            } lg:flex lg:items-stretch lg:gap-8`}
     >
         {/* Project Image */}
-        <Link 
+        <Link
+            prefetch={false}
             href={`/projects/${project.slug.current}`}
             className='relative h-56 sm:h-64 md:h-72 lg:h-auto lg:w-1/2 overflow-hidden block'
         >
@@ -45,7 +45,8 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             <div>
                 {/* Title and Badges Row */}
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
-                    <Link 
+                    <Link
+                        prefetch={false}
                         href={`/projects/${project.slug.current}`}
                         className="flex-1 group/title"
                     >
@@ -81,6 +82,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 
                 {/* Overview */}
                 <Link
+                    prefetch={false}
                     href={`/projects/${project.slug.current}`}
                     className="block group/overview"
                 >
