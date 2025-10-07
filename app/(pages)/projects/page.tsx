@@ -106,7 +106,7 @@ const Projects = async () => {
 				<h1 className='text-3xl font-bold leading-tight text-gray-900 dark:text-gray-100 sm:text-4xl md:text-5xl lg:text-6xl'>
 					Projects
 				</h1>
-				<p className='text-base text-gray-600 dark:text-gray-400 max-w-2xl sm:text-lg'>
+				<p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl'>
 					A collection of projects spanning my coding journey - from early experiments to current focused work on infrastructure and security.				</p>
 			</div>
 
