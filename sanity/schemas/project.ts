@@ -10,9 +10,32 @@ export default {
             type: 'string',
         },
         {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+                source: 'title',
+                maxLength: 96,
+            },
+            slugify: (input: string) =>
+                input
+                    .toLowerCase()
+                    .replace(/\s+/g, '-')
+                    .slice(0, 96),
+            isUnique: (slug: string, context: any) => context.defaultIsUnique(slug, context),
+            validation: (Rule: any) => Rule.required(),
+        },
+        {
             name: 'overview',
             title: 'Small Overview',
             type: 'string',
+            description: 'Short description for project cards (max 1-2 sentences)'
+        },
+        {
+            name: 'description',
+            title: 'Detailed Description',
+            type: 'text',
+            description: 'Full project details in markdown format for the project detail page'
         },
         {
             name: 'image',

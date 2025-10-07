@@ -1,6 +1,6 @@
 import React from 'react'
 import { getExperiences } from '../../lib/data'
-import type { Experience } from '@/app/lib/experience'
+import type { Experience } from '@/app/lib/data'
 
 const Experience = async () => {
   const experiences = await getExperiences()

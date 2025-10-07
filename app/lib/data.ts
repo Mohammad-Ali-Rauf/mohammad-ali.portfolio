@@ -2,10 +2,21 @@ import { groq } from 'next-sanity'
 import { client } from './sanity'
 import imageUrlBuilder from '@sanity/image-url'
 
+import type { Project } from '../types/project'
+
 const builder = imageUrlBuilder(client)
 
 export function urlFor(source: any) {
   return builder.image(source)
+}
+
+export type Experience = {
+  title: string,
+  company: string,
+  period: string,
+  description: string,
+  skills: string[],
+  type: string
 }
 
 // Profile Data
@@ -46,4 +57,55 @@ export async function getToolkit() {
   }`
 
   return await client.fetch(query)
+}
+
+export async function getProjects(): Promise<Project[]> {
+  try {
+    const query = groq`*[_type == "project"]{
+      title,
+      overview,
+      githubLink,
+      demoLink,
+      _id,
+      skills,
+      "image": image,
+      category,
+      status,
+      slug
+    }`;
+
+    const data = await client.fetch(query, {}, { next: { revalidate: 60 } });
+    return data?.sort((a: Project, b: Project) => {
+      if (a.category === 'featured' && b.category !== 'featured') return -1;
+      if (a.category !== 'featured' && b.category === 'featured') return 1;
+      return (a.title || '').localeCompare(b.title || '');
+    }) || [];
+  } catch (error) {
+    console.error('Failed to fetch projects:', error);
+    return [];
+  }
+}
+
+export async function getProjectBySlug(slug: string): Promise<Project> {
+  try {
+    const query = groq`*[_type == "project" && slug.current == $slug][0]{
+                title,
+                overview,
+                description,
+                githubLink,
+                demoLink,
+                _id,
+                skills,
+                "image": image,
+                category,
+                status,
+                slug
+            }`;
+
+    const project = await client.fetch(query, { slug });
+    return project;
+  } catch (error) {
+    console.error('Error fetching project:', error);
+    throw error;
+  }
 }
