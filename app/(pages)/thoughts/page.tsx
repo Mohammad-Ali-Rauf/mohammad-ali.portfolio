@@ -48,7 +48,7 @@ export default async function Thoughts() {
 				</div>
 			) : (
 				<div className='grid gap-6 lg:gap-8'>
-					{data.map((thought) => (
+					{data?.map((thought) => (
 						<Link href={`/thoughts/${thought._id}`} key={thought._id}>
 							<article className='group relative overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/10 hover:-translate-y-1 cursor-pointer'>
 								<div className='absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
