@@ -25,7 +25,7 @@ const Experience = async () => {
           Experience
         </h1>
         <p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl'>
-          Not really &apos;Job Experience&apos;, just a learning journey so far in life or maybe just tech.
+          Mix of paid and volunteer roles across development and educational domains.
         </p>
       </div>
 
@@ -96,14 +96,6 @@ const Experience = async () => {
           </div>
         ))}
       </div>
-
-      {/* Learning Journey Section */}
-      <div className='mt-16 p-8 rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800'>
-  <p className='text-gray-600 dark:text-gray-400 italic'>
-    Note: All &quot;experience&quot; listed here is self-directed learning. 
-    I&apos;m a student first — these are experiments, not professional roles.
-  </p>
-</div>
     </div>
   )
 }
