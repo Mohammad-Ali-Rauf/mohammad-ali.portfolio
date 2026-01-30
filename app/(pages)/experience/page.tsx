@@ -25,8 +25,7 @@ const Experience = async () => {
           Experience
         </h1>
         <p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl'>
-          My journey through different roles in tech, from development to education. 
-          Each experience has helped shape my understanding of technology and security.
+          Not really 'Job Experience', just a learning journey so far in life or maybe just tech.
         </p>
       </div>
 
@@ -99,16 +98,12 @@ const Experience = async () => {
       </div>
 
       {/* Learning Journey Section */}
-      <div className='mt-16 p-8 rounded-2xl bg-gradient-to-r from-gray-50 to-red-50 dark:from-gray-900/50 dark:to-red-900/20 border border-gray-200 dark:border-gray-800'>
-        <h3 className='text-2xl font-bold text-gray-900 dark:text-white mb-4'>
-          Continuous Learning
-        </h3>
-        <p className='text-gray-600 dark:text-gray-300 leading-relaxed text-lg'>
-          Beyond formal roles, I&apos;m constantly exploring new technologies and security concepts. 
-          Currently diving deeper into red team operations, cloud security, and advanced penetration testing techniques. 
-          Every project and learning opportunity helps me better understand how to build—and break—secure systems.
-        </p>
-      </div>
+      <div className='mt-16 p-8 rounded-2xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800'>
+  <p className='text-gray-600 dark:text-gray-400 italic'>
+    Note: All "experience" listed here is self-directed learning. 
+    I’m a student first — these are experiments, not professional roles.
+  </p>
+</div>
     </div>
   )
 }

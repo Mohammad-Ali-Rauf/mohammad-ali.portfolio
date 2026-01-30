@@ -37,8 +37,8 @@ export default async function Home() {
           Home
         </h1>
         <p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl'>
-          Exploring offensive security, breaking systems to understand how to better protect them, 
-          and continuously learning across the entire technology stack.
+          Exploring how computers work from the inside out. <br/>
+          Like a Rubik's Cube, every layer reveals new complexities and patterns.
         </p>
       </div>
 
@@ -70,7 +70,7 @@ export default async function Home() {
                     {profile.title}
                   </p>
                   <p className='text-sm text-gray-600 dark:text-gray-400'>
-                    {age} years old • Security Researcher
+                    Student • Karachi, PK
                   </p>
                 </div>
               </div>

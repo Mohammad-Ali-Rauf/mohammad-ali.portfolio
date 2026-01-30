@@ -11,7 +11,7 @@ const Projects = async () => {
                     Projects
                 </h1>
                 <p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl'>
-                    A curated collection of my work - from production-grade systems to learning experiments that explore new technologies and architectures.
+                    Half-baked experiments, abandoned prototypes, and rare moments of clarity — all part of learning in public.
                 </p>
             </div>
 
