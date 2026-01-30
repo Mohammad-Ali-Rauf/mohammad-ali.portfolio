@@ -16,7 +16,7 @@ export default function Toolkit({ toolkitData }: ToolkitProps) {
   const getCategoryConfig = (category: string) => {
     switch (category) {
       case 'mastered':
-        return { title: 'Technologies Mastered', emoji: '🎯' }
+        return { title: 'Done', emoji: '🎯' }
       case 'learning':
         return { title: 'Currently Learning', emoji: '🚀' }
       case 'planned':
