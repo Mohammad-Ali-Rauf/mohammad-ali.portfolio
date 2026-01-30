@@ -69,9 +69,6 @@ export default async function Home() {
                   <p className='text-sm font-medium text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-3 py-1 rounded-full inline-block'>
                     {profile.title}
                   </p>
-                  <p className='text-sm text-gray-600 dark:text-gray-400'>
-                    Student • Karachi, PK
-                  </p>
                 </div>
               </div>
 
@@ -106,7 +103,7 @@ export default async function Home() {
               </div>
 
               {/* Dynamic Quick Stats */}
-              <div className='grid grid-cols-2 gap-4 w-full pt-4 border-t border-gray-200 dark:border-gray-800'>
+              {/* <div className='grid grid-cols-2 gap-4 w-full pt-4 border-t border-gray-200 dark:border-gray-800'>
                 <div className='text-center'>
                   <p className='text-2xl font-bold text-gray-900 dark:text-white'>{codingYears}+</p>
                   <p className='text-xs text-gray-600 dark:text-gray-400'>Years Coding</p>
@@ -115,7 +112,7 @@ export default async function Home() {
                   <p className='text-2xl font-bold text-gray-900 dark:text-white'>{rolesCount}</p>
                   <p className='text-xs text-gray-600 dark:text-gray-400'>Professional Roles</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
