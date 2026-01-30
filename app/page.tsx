@@ -38,7 +38,7 @@ export default async function Home() {
         </h1>
         <p className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl'>
           Exploring how computers work from the inside out. <br/>
-          Like a Rubik's Cube, every layer reveals new complexities and patterns.
+          Like a Rubik&apos;s Cube, every layer reveals new complexities and patterns.
         </p>
       </div>
 
