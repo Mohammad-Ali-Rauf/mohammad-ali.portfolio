@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.title }}{% endblock %}</title>
+  <style>
+
+    html { scrollbar-width: none; }
+    html::-webkit-scrollbar { display: none; }
+    :root{--bg:#0a0a0a;--fg:#e0e0e0;--accent:#7dd3fc;--muted:#666}
+    body{background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif;max-width:680px;margin:2rem auto;padding:0 1rem}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    header{text-align:center; margin-bottom:3rem;}
+    header h1{margin:0; font-size:2rem; letter-spacing:-1px;}
+    header p{color:var(--muted); font-size:0.95rem; margin-top:0.5rem;}nav{margin:1rem 0}nav a{margin-right:1rem}
+    time{color:var(--muted);font-size:.9rem}
+    .stack{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+    .stack span{background:#1a1a1a;padding:.2rem .5rem;border-radius:3px;font-size:.9rem}
+    pre{background:#111;padding:1rem;overflow-x:auto;border-left:3px solid var(--accent)}article { margin: 2.5rem 0; }
+article h2 { margin: 0.5rem 0; font-size: 1.4rem; }
+article time { display: block; color: var(--muted); font-size: 0.85rem; margin-bottom: 0.3rem; }
+article .summary { color: #aaa; font-size: 0.95rem; margin-top: 0.5rem; line-height: 1.5; }
+article .summary:hover { color: var(--fg); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="{{ config.base_url }}">Ali</a></h1>
+    <nav>
+      <a href="/about">/about</a>
+      <a href="/thoughts">/thoughts</a>
+      <a href="/projects">/projects</a>
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+</body>
+</html>

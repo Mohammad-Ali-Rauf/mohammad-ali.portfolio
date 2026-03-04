@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ section.title }}</h1>
+
+{% if section.path == "/about/" %}
+  <div class="content">
+    {{ section.content | safe }}
+  </div>
+
+{% elif section.path == "/thoughts/" %}
+  {% for page in section.pages %}
+  <article>
+    <time>{{ page.date | date(format="%Y-%m-%d") }}</time>
+    <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+    {% if page.description %}
+      <p class="summary">{{ page.description }}</p>
+    {% endif %}
+  </article>
+  {% endfor %}
+
+{% elif section.path == "/projects/" %}
+  {% for page in section.pages %}
+  <article>
+    <time>{{ page.date | date(format="%Y-%m-%d") }}</time>
+    <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+    {% if page.description %}
+      <p class="summary">{{ page.description }}</p>
+    {% endif %}
+  </article>
+  {% endfor %}
+{% endif %}
+{% endblock %}
