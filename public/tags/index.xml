@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Ali</title>
+    <link>https://mohammad-ali-rauf.vercel.app/tags/</link>
+    <description>Recent content in Tags on Ali</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mohammad-ali-rauf.vercel.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Boot</title>
+      <link>https://mohammad-ali-rauf.vercel.app/tags/boot/</link>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://mohammad-ali-rauf.vercel.app/tags/boot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Grub</title>
+      <link>https://mohammad-ali-rauf.vercel.app/tags/grub/</link>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://mohammad-ali-rauf.vercel.app/tags/grub/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Learning-in-Public</title>
+      <link>https://mohammad-ali-rauf.vercel.app/tags/learning-in-public/</link>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://mohammad-ali-rauf.vercel.app/tags/learning-in-public/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://mohammad-ali-rauf.vercel.app/tags/linux/</link>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://mohammad-ali-rauf.vercel.app/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Uefi</title>
+      <link>https://mohammad-ali-rauf.vercel.app/tags/uefi/</link>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://mohammad-ali-rauf.vercel.app/tags/uefi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Honest</title>
+      <link>https://mohammad-ali-rauf.vercel.app/tags/honest/</link>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://mohammad-ali-rauf.vercel.app/tags/honest/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hot-Take</title>
+      <link>https://mohammad-ali-rauf.vercel.app/tags/hot-take/</link>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://mohammad-ali-rauf.vercel.app/tags/hot-take/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Journey</title>
+      <link>https://mohammad-ali-rauf.vercel.app/tags/journey/</link>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://mohammad-ali-rauf.vercel.app/tags/journey/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Webdev</title>
+      <link>https://mohammad-ali-rauf.vercel.app/tags/webdev/</link>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://mohammad-ali-rauf.vercel.app/tags/webdev/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

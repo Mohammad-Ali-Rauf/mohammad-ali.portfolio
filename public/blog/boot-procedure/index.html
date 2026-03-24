@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Today I Learned: The Boot Procedure from Firmware to Shell | Ali</title>
+<meta name="keywords" content="boot, uefi, grub, linux, learning-in-public">
+<meta name="description" content="I&rsquo;ve been running Linux for years. sudo reboot and watch the magic happen.
+But I never actually knew what was happening between the power button and the login prompt.
+Today I watched a course by Sander van Vugt on LinkedIn Learning, and finally connected the dots. Here&rsquo;s what I learned.
+
+The High-Level Flow
+Firmware → Disk → Bootloader → Kernel → initramfs → systemd → Services → Shell
+Simple, right? But each step has more detail than I expected.">
+<meta name="author" content="Ali">
+<link rel="canonical" href="https://mohammad-ali-rauf.vercel.app/blog/boot-procedure/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mohammad-ali-rauf.vercel.app/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mohammad-ali-rauf.vercel.app/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mohammad-ali-rauf.vercel.app/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mohammad-ali-rauf.vercel.app/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mohammad-ali-rauf.vercel.app/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://mohammad-ali-rauf.vercel.app/blog/boot-procedure/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://mohammad-ali-rauf.vercel.app/blog/boot-procedure/">
+  <meta property="og:site_name" content="Ali">
+  <meta property="og:title" content="Today I Learned: The Boot Procedure from Firmware to Shell">
+  <meta property="og:description" content="I’ve been running Linux for years. sudo reboot and watch the magic happen.
+But I never actually knew what was happening between the power button and the login prompt.
+Today I watched a course by Sander van Vugt on LinkedIn Learning, and finally connected the dots. Here’s what I learned.
+The High-Level Flow Firmware → Disk → Bootloader → Kernel → initramfs → systemd → Services → Shell Simple, right? But each step has more detail than I expected.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-03-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-24T00:00:00+00:00">
+    <meta property="article:tag" content="Boot">
+    <meta property="article:tag" content="Uefi">
+    <meta property="article:tag" content="Grub">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Learning-in-Public">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Today I Learned: The Boot Procedure from Firmware to Shell">
+  <meta name="twitter:description" content="I’ve been running Linux for years. sudo reboot and watch the magic happen.
+But I never actually knew what was happening between the power button and the login prompt.
+Today I watched a course by Sander van Vugt on LinkedIn Learning, and finally connected the dots. Here’s what I learned.
+The High-Level Flow Firmware → Disk → Bootloader → Kernel → initramfs → systemd → Services → Shell Simple, right? But each step has more detail than I expected.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "https://mohammad-ali-rauf.vercel.app/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Today I Learned: The Boot Procedure from Firmware to Shell",
+      "item": "https://mohammad-ali-rauf.vercel.app/blog/boot-procedure/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Today I Learned: The Boot Procedure from Firmware to Shell",
+  "name": "Today I Learned: The Boot Procedure from Firmware to Shell",
+  "description": "I\u0026rsquo;ve been running Linux for years. sudo reboot and watch the magic happen.\nBut I never actually knew what was happening between the power button and the login prompt.\nToday I watched a course by Sander van Vugt on LinkedIn Learning, and finally connected the dots. Here\u0026rsquo;s what I learned.\nThe High-Level Flow Firmware → Disk → Bootloader → Kernel → initramfs → systemd → Services → Shell Simple, right? But each step has more detail than I expected.\n",
+  "keywords": [
+    "boot", "uefi", "grub", "linux", "learning-in-public"
+  ],
+  "articleBody": "I’ve been running Linux for years. sudo reboot and watch the magic happen.\nBut I never actually knew what was happening between the power button and the login prompt.\nToday I watched a course by Sander van Vugt on LinkedIn Learning, and finally connected the dots. Here’s what I learned.\nThe High-Level Flow Firmware → Disk → Bootloader → Kernel → initramfs → systemd → Services → Shell Simple, right? But each step has more detail than I expected.\nStep 1: Firmware When you press the power button, the firmware (BIOS or UEFI) initializes hardware and decides where to boot from.\nOld way (BIOS/MBR):\nBIOS loads the Master Boot Record (first 512 bytes of disk) MBR contains stage 1 of GRUB GRUB takes over from there New way (UEFI/GPT):\nUEFI firmware reads the GUID Partition Table It looks for an EFI System Partition (ESP) This partition contains bootloaders (like grubx64.efi) This is why UEFI + GPT is more capable. UEFI bypasses the legacy MBR dance, and GPT supports disks \u003e 2TB. UEFI also supports something called Secure Boot, unlike BIOS.\nStep 2: GRUB (Grand Unified Bootloader) GRUB has one job: find and load the kernel.\nIt gives you that menu where you can:\nChoose which OS to boot Edit kernel parameters Boot into recovery mode Under the hood, GRUB knows how to:\nRead filesystems (ext4, btrfs, xfs) Find vmlinuz-* (the kernel) Find initramfs-* (initial RAM filesystem) Step 3: Kernel Once GRUB loads the kernel into memory, the kernel:\nInitializes CPU, memory, devices Mounts the initial RAM filesystem (initramfs) Hands over control This is where the magic starts — the kernel is now the boss.\nStep 4: initramfs (Initial RAM Filesystem) I always wondered what initramfs was for. Now I get it:\ninitramfs is a tiny root filesystem loaded into RAM that contains:\nEssential kernel modules (especially disk drivers) Simple scripts to find the real root filesystem Why? If your kernel needs drivers to read your disk (NVMe, LVM, encryption), but those drivers live on the disk — chicken and egg problem.\ninitramfs solves this by providing just enough to:\nLoad the right drivers Locate the real root partition Mount it Pass control Step 5: systemd Once the real root is mounted, init (usually systemd these days) takes over.\nsystemd:\nStarts all system services Manages dependencies (network needs to be up before web server) Handles sockets, timers, mounts It’s the first process (PID 1) and the parent of everything else.\nStep 6: Services After systemd starts, it activates:\nDisplay managers (if you have a GUI) Network services SSH daemon Your database, web server, etc. This is where “Linux is running” becomes “Linux is doing useful things.”\nStep 7: Shell Finally — the shell.\nWhether it’s:\ngetty on tty1-6 A terminal emulator in GNOME SSH session You get your prompt. The boot process is complete.\nWhat I Still Don’t Understand How does UEFI actually locate the ESP? Is it hardcoded? Does it scan? When we use UEFI but disable Secure Boot, can we still call UEFI more ‘secure’ than BIOS? What exactly happens in the kernel between initramfs and mounting root? How does systemd know what order to start services? More to learn. But today, this feels good.\nWhy This Matters I’m not writing this to be an expert. I’m writing this to:\nSolidify what I learned — teaching helps retention Get corrected — If there is a misconception, correct me Help someone else who’s equally confused If you see something wrong, Tell me. I’m here to learn.\n",
+  "wordCount" : "586",
+  "inLanguage": "en",
+  "datePublished": "2026-03-24T00:00:00Z",
+  "dateModified": "2026-03-24T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Ali"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mohammad-ali-rauf.vercel.app/blog/boot-procedure/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ali",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mohammad-ali-rauf.vercel.app/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://mohammad-ali-rauf.vercel.app/" accesskey="h" title="Ali (Alt + H)">Ali</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://mohammad-ali-rauf.vercel.app/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mohammad-ali-rauf.vercel.app/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mohammad-ali-rauf.vercel.app/ideas/" title="Ideas">
+                    <span>Ideas</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mohammad-ali-rauf.vercel.app/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Today I Learned: The Boot Procedure from Firmware to Shell
+    </h1>
+    <div class="post-meta"><span title='2026-03-24 00:00:00 +0000 UTC'>March 24, 2026</span>&nbsp;·&nbsp;<span>Ali</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>I&rsquo;ve been running Linux for years. <code>sudo reboot</code> and watch the magic happen.</p>
+<p>But I never actually knew what was happening between the power button and the login prompt.</p>
+<p>Today I watched a course by Sander van Vugt on LinkedIn Learning, and finally connected the dots. Here&rsquo;s what I learned.</p>
+<hr>
+<h2 id="the-high-level-flow">The High-Level Flow<a hidden class="anchor" aria-hidden="true" href="#the-high-level-flow">#</a></h2>
+<pre tabindex="0"><code>Firmware → Disk → Bootloader → Kernel → initramfs → systemd → Services → Shell
+</code></pre><p>Simple, right? But each step has more detail than I expected.</p>
+<hr>
+<h2 id="step-1-firmware">Step 1: Firmware<a hidden class="anchor" aria-hidden="true" href="#step-1-firmware">#</a></h2>
+<p>When you press the power button, the firmware (BIOS or UEFI) initializes hardware and decides where to boot from.</p>
+<p><strong>Old way (BIOS/MBR):</strong></p>
+<ul>
+<li>BIOS loads the Master Boot Record (first 512 bytes of disk)</li>
+<li>MBR contains stage 1 of GRUB</li>
+<li>GRUB takes over from there</li>
+</ul>
+<p><strong>New way (UEFI/GPT):</strong></p>
+<ul>
+<li>UEFI firmware reads the GUID Partition Table</li>
+<li>It looks for an <strong>EFI System Partition</strong> (ESP)</li>
+<li>This partition contains bootloaders (like <code>grubx64.efi</code>)</li>
+</ul>
+<p>This is why UEFI + GPT is more capable. UEFI bypasses the legacy MBR dance, and GPT supports disks &gt; 2TB. UEFI also supports something called <em>Secure Boot</em>, unlike BIOS.</p>
+<hr>
+<h2 id="step-2-grub-grand-unified-bootloader">Step 2: GRUB (Grand Unified Bootloader)<a hidden class="anchor" aria-hidden="true" href="#step-2-grub-grand-unified-bootloader">#</a></h2>
+<p>GRUB has one job: find and load the kernel.</p>
+<p>It gives you that menu where you can:</p>
+<ul>
+<li>Choose which OS to boot</li>
+<li>Edit kernel parameters</li>
+<li>Boot into recovery mode</li>
+</ul>
+<p>Under the hood, GRUB knows how to:</p>
+<ul>
+<li>Read filesystems (ext4, btrfs, xfs)</li>
+<li>Find <code>vmlinuz-*</code> (the kernel)</li>
+<li>Find <code>initramfs-*</code> (initial RAM filesystem)</li>
+</ul>
+<hr>
+<h2 id="step-3-kernel">Step 3: Kernel<a hidden class="anchor" aria-hidden="true" href="#step-3-kernel">#</a></h2>
+<p>Once GRUB loads the kernel into memory, the kernel:</p>
+<ul>
+<li>Initializes CPU, memory, devices</li>
+<li>Mounts the initial RAM filesystem (<code>initramfs</code>)</li>
+<li>Hands over control</li>
+</ul>
+<p>This is where the magic starts — the kernel is now the boss.</p>
+<hr>
+<h2 id="step-4-initramfs-initial-ram-filesystem">Step 4: initramfs (Initial RAM Filesystem)<a hidden class="anchor" aria-hidden="true" href="#step-4-initramfs-initial-ram-filesystem">#</a></h2>
+<p>I always wondered what <code>initramfs</code> was for. Now I get it:</p>
+<p><code>initramfs</code> is a tiny root filesystem loaded into RAM that contains:</p>
+<ul>
+<li>Essential kernel modules (especially disk drivers)</li>
+<li>Simple scripts to find the real root filesystem</li>
+</ul>
+<p><strong>Why?</strong> If your kernel needs drivers to read your disk (NVMe, LVM, encryption), but those drivers live <em>on</em> the disk — chicken and egg problem.</p>
+<p><code>initramfs</code> solves this by providing just enough to:</p>
+<ol>
+<li>Load the right drivers</li>
+<li>Locate the real root partition</li>
+<li>Mount it</li>
+<li>Pass control</li>
+</ol>
+<hr>
+<h2 id="step-5-systemd">Step 5: systemd<a hidden class="anchor" aria-hidden="true" href="#step-5-systemd">#</a></h2>
+<p>Once the real root is mounted, <code>init</code> (usually systemd these days) takes over.</p>
+<p>systemd:</p>
+<ul>
+<li>Starts all system services</li>
+<li>Manages dependencies (network needs to be up before web server)</li>
+<li>Handles sockets, timers, mounts</li>
+</ul>
+<p>It&rsquo;s the first process (PID 1) and the parent of everything else.</p>
+<hr>
+<h2 id="step-6-services">Step 6: Services<a hidden class="anchor" aria-hidden="true" href="#step-6-services">#</a></h2>
+<p>After systemd starts, it activates:</p>
+<ul>
+<li>Display managers (if you have a GUI)</li>
+<li>Network services</li>
+<li>SSH daemon</li>
+<li>Your database, web server, etc.</li>
+</ul>
+<p>This is where &ldquo;Linux is running&rdquo; becomes &ldquo;Linux is doing useful things.&rdquo;</p>
+<hr>
+<h2 id="step-7-shell">Step 7: Shell<a hidden class="anchor" aria-hidden="true" href="#step-7-shell">#</a></h2>
+<p>Finally — the shell.</p>
+<p>Whether it&rsquo;s:</p>
+<ul>
+<li><code>getty</code> on tty1-6</li>
+<li>A terminal emulator in GNOME</li>
+<li>SSH session</li>
+</ul>
+<p>You get your prompt. The boot process is complete.</p>
+<hr>
+<h2 id="what-i-still-dont-understand">What I Still Don&rsquo;t Understand<a hidden class="anchor" aria-hidden="true" href="#what-i-still-dont-understand">#</a></h2>
+<ul>
+<li><strong>How does UEFI actually locate the ESP?</strong> Is it hardcoded? Does it scan?</li>
+<li><strong>When we use UEFI but disable <em>Secure Boot</em>, can we still call UEFI more &lsquo;secure&rsquo; than BIOS?</strong></li>
+<li><strong>What exactly happens in the kernel between initramfs and mounting root?</strong></li>
+<li><strong>How does systemd know what order to start services?</strong></li>
+</ul>
+<p>More to learn. But today, this feels good.</p>
+<hr>
+<h2 id="why-this-matters">Why This Matters<a hidden class="anchor" aria-hidden="true" href="#why-this-matters">#</a></h2>
+<p>I&rsquo;m not writing this to be an expert. I&rsquo;m writing this to:</p>
+<ol>
+<li><strong>Solidify what I learned</strong> — teaching helps retention</li>
+<li><strong>Get corrected</strong> — If there is a misconception, correct me</li>
+<li><strong>Help someone else</strong> who&rsquo;s equally confused</li>
+</ol>
+<p>If you see something wrong, <a href="/contact">Tell me</a>. I&rsquo;m here to learn.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://mohammad-ali-rauf.vercel.app/tags/boot/">Boot</a></li>
+      <li><a href="https://mohammad-ali-rauf.vercel.app/tags/uefi/">Uefi</a></li>
+      <li><a href="https://mohammad-ali-rauf.vercel.app/tags/grub/">Grub</a></li>
+      <li><a href="https://mohammad-ali-rauf.vercel.app/tags/linux/">Linux</a></li>
+      <li><a href="https://mohammad-ali-rauf.vercel.app/tags/learning-in-public/">Learning-in-Public</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://mohammad-ali-rauf.vercel.app/">Ali</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
