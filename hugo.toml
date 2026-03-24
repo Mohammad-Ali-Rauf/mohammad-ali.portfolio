@@ -1,0 +1,38 @@
+baseURL = "http://localhost:1313"
+languageCode = "en-us"
+title = "Ali"
+theme = "PaperMod"
+
+[params]
+  author = "Ali"
+mainSections = [ "blog", "docs" ]
+
+
+[params.homeInfoParams]
+  title = "Hi, I'm Ali"
+  content = "Vulnerability research engineer (in training). Documenting my journey through UEFI/BIOS, RISC-V, x86-64, and Linux kernel internals."
+  
+
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "blog"
+  name = "Blog"
+  url = "/blog/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "ideas"
+  name = "Ideas"
+  url = "/ideas/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "contact"
+  name = "Contact"
+  url = "/contact/"
+  weight = 40

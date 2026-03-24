@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Learning-in-Public on Ali</title>
+    <link>http://localhost:1313/tags/learning-in-public/</link>
+    <description>Recent content in Learning-in-Public on Ali</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/learning-in-public/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Today I Learned: The Boot Procedure from Firmware to Shell</title>
+      <link>http://localhost:1313/blog/boot-procedure/</link>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/boot-procedure/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been running Linux for years. &lt;code&gt;sudo reboot&lt;/code&gt; and watch the magic happen.&lt;/p&gt;
+&lt;p&gt;But I never actually knew what was happening between the power button and the login prompt.&lt;/p&gt;
+&lt;p&gt;Today I watched a course by Sander van Vugt on LinkedIn Learning, and finally connected the dots. Here&amp;rsquo;s what I learned.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;the-high-level-flow&#34;&gt;The High-Level Flow&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Firmware → Disk → Bootloader → Kernel → initramfs → systemd → Services → Shell
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Simple, right? But each step has more detail than I expected.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

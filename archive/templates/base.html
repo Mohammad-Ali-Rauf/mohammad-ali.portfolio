@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+  {% block title %}
+    {% if page %}{{ page.title }}{% elif section %}{{ section.title }}{% else %}{{ config.title }}{% endif %}
+  {% endblock %}
+</title>
+  <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
+</head>
+<body>
+  <header>
+    <a href="{{ config.base_url }}" class="brand">Ali</a>
+    <nav>
+      <a href="{{ config.base_url }}">Blog</a>
+      <a href="/about">About</a>
+      <a href="/ideas">Ideas</a>
+      <a href="/projects">Projects</a>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

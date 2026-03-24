@@ -1,0 +1,113 @@
+:root {
+  --bg: #0d0d0d;
+  --fg: #e0e0e0;
+  --accent: #00ff9d;
+  --dim: #666;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.6 'JetBrains Mono', 'Fira Code', monospace;
+  max-width: 760px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+}
+
+a:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+header {
+  display: flex;
+  justify-content: space-between; /* name ← left, nav → right */
+  align-items: center;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 1rem;
+  flex-wrap: wrap; /* don't break on mobile */
+  gap: 1rem;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  font-weight: 700;
+  border: none;
+  color: var(--fg);
+}
+
+nav a:hover {
+  color: var(--accent);
+  background: transparent;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin: 2rem 0 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+pre {
+  background: #1a1a1a;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid #333;
+}
+
+code {
+  font-family: inherit;
+}
+
+.brand {
+  font-weight: 900;
+  color: #fff;
+  border: none; /* override global a border */
+}
+.brand:hover {
+  background: transparent; /* override global hover */
+  color: var(--accent);
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: var(--dim);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+hr {
+  border: 0;
+  border-top: 1px dashed #333;
+  margin: 2rem 0;
+}
+
+@media (max-width: 600px) {
+  header { flex-direction: column; align-items: flex-start; }
+  nav { gap: 0.75rem; flex-wrap: wrap; }
+}

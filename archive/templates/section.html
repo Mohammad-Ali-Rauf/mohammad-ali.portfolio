@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ section.title }} | {{ config.title }}{% endblock %}
+{% block content %}
+<h1>{{ section.title }}</h1>
+
+{{ section.content | safe }}
+
+{% if section.pages %}
+  {% for page in section.pages %}
+    <article>
+      <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+      <p>{{ page.summary | safe }}</p>
+      <p><a href="{{ page.permalink }}">(more…)</a></p>
+      <time class="meta">{{ page.date | date(format="%B %d, %Y") }}</time>
+      <hr>
+    </article>
+  {% endfor %}
+{% else %}
+  {% if not section.content %}
+    <p class="meta" style="margin: 2rem 0;">
+      No entries here yet. 
+      <a href="{{ config.base_url }}">Go back home</a> or check <a href="/ideas">Ideas</a> for raw concepts.
+    </p>
+  {% endif %}
+{% endif %}
+{% endblock %}
