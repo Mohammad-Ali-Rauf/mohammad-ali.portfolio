@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313"
+baseURL = "https://mohammad-ali-rauf.vercel.app"
 languageCode = "en-us"
 title = "Ali"
 theme = "PaperMod"
