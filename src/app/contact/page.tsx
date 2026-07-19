@@ -40,7 +40,9 @@ export default function Contact() {
       </h1>
       <div className="w-10 h-1 bg-[var(--color-primary)] rounded-full mb-4" />
       <p className="text-sm sm:text-base text-[var(--color-muted)] mb-10 max-w-lg">
-        Got a project or just want to chat? Don&apos;t hesitate to reach out.
+        Want to say hi? I read everything — eventually.
+        This inbox is checked between naps, so patience is appreciated (and
+        rewarded with a slightly less sleep-deprived reply).
       </p>
 
       <div className="grid sm:grid-cols-5 gap-8 sm:gap-12 mb-16">
@@ -49,10 +51,10 @@ export default function Contact() {
             <div className="w-3 h-3 rounded-full bg-[var(--color-primary)] animate-pulse shrink-0" />
             <div>
               <p className="text-sm font-semibold text-[var(--color-foreground)]">
-                Available for freelance
+                Already busy enough, understanding is appreciated.
               </p>
               <p className="text-xs text-[var(--color-muted)]">
-                Open to new projects
+                Replies measured in naps, not minutes
               </p>
             </div>
           </div>
@@ -115,17 +117,17 @@ export default function Contact() {
                 </svg>
               </div>
               <p className="text-lg font-bold text-[var(--color-foreground)]">
-                Message sent!
+                Pigeon dispatched!
               </p>
               <p className="text-sm text-[var(--color-muted)] mt-1">
-                I&apos;ll get back to you soon.
+                It&apos;ll reach me between 3-5 business days (pigeons are slow, sorry).
               </p>
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
                 className="mt-4 text-xs text-[var(--color-primary)] hover:underline"
               >
-                Send another
+                Send another (waiting till pigeon breeding season is highly recommended to prevent overload.)
               </button>
             </div>
           ) : (
@@ -146,7 +148,7 @@ export default function Contact() {
                     id="name"
                     name="name"
                     type="text"
-                    placeholder="John Doe"
+                    placeholder="(Please don't write a fictional name. Although you may still use one, its discouraged, not criminalized.)"
                     required
                     className="w-full px-4 py-2.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] text-sm text-[var(--color-foreground)] outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/15 transition-all placeholder:text-[var(--color-muted)]"
                   />
@@ -162,7 +164,7 @@ export default function Contact() {
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder="fictional@action.com"
                     required
                     className="w-full px-4 py-2.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] text-sm text-[var(--color-foreground)] outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/15 transition-all placeholder:text-[var(--color-muted)]"
                   />
@@ -179,7 +181,7 @@ export default function Contact() {
                   id="subject"
                   name="subject"
                   type="text"
-                  placeholder="Project inquiry"
+                  placeholder="e.g. I spent 19 hrs out of 24 on AI chatbots, to fight the final boss: my loneliness"
                   required
                   className="w-full px-4 py-2.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] text-sm text-[var(--color-foreground)] outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/15 transition-all placeholder:text-[var(--color-muted)]"
                 />
@@ -195,14 +197,14 @@ export default function Contact() {
                   id="message"
                   name="message"
                   rows={5}
-                  placeholder="Tell me about your project..."
+                  placeholder="This is not a literature review or a peer-reviewed journal, it is strongly advised to write briefly."
                   required
                   className="w-full px-4 py-2.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] text-sm text-[var(--color-foreground)] outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/15 transition-all resize-none placeholder:text-[var(--color-muted)]"
                 />
               </div>
               {status === "error" && (
                 <p className="text-sm text-[var(--color-accent)]">
-                  Something went wrong. Please try again.
+                  Something went wrong. (The pigeon either got hunted or hijacked, sorry for the inconvenience.)
                 </p>
               )}
               <button
@@ -210,7 +212,7 @@ export default function Contact() {
                 disabled={status === "loading"}
                 className="px-6 py-2.5 rounded-lg bg-[var(--color-primary)] text-white text-sm font-semibold hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {status === "loading" ? "Sending..." : "Send Message"}
+                {status === "loading" ? "Releasing the pigeon..." : "It's really important!!!"}
               </button>
             </form>
           )}

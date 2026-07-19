@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mohammad Ali | Portfolio",
-  description: "Full-stack developer",
+  title: "Mohammad Ali — Full Stack Developer (ish)",
+  description: "This portfolio is 40% code, 60% coping mechanism. Full-stack dev pivoting fields, currently between chapters.",
 };
 
 export default function RootLayout({
