@@ -57,18 +57,14 @@ export default function Home() {
         </h2>
         <div className="rounded-lg border border-[var(--color-border)] p-5 sm:p-6">
           <p className="text-sm text-[var(--color-muted)] leading-relaxed mb-3">
-            As-salamu alaykum — I'm Ali, a full-stack developer and A-Level
-            student based in Karachi. I build clean, responsive web applications
-            for founders and small businesses who need short-term, fixed-scope
-            delivery without the overhead of agencies or vague engagements.
-            Whether it's a landing page, an MVP scaffold, a bug fix, or a small
-            business tool, I focus on clear outcomes, maintainable code, and
-            quick turnaround.
-          </p>
-          <p className="text-sm text-[var(--color-muted)] leading-relaxed">
-            I'm a student first, so I prioritize well-defined projects where I
-            can deliver real value without distraction. If that sounds like what
-            you need, let's talk.
+            As-salamu alaykum — I'm Ali, a full-stack developer and A-Level student based in Karachi, Pakistan.
+            <br />
+            <br />
+            I build clean, responsive web applications for founders and small businesses that need practical solutions delivered with clarity and precision. From landing pages and MVPs to bug fixes and custom business tools, I focus on well-defined scope, maintainable code, and dependable delivery.
+<br />
+            <br />
+            I work best on focused projects with clear goals, realistic timelines, and measurable outcomes. No bloated engagements or unnecessary complexity — just thoughtful engineering built around what your business actually needs.
+            Have a project in mind? Let's talk.
           </p>
         </div>
       </section>

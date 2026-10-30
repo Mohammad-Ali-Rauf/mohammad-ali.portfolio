@@ -70,7 +70,7 @@ export default function Contact() {
             },
             {
               label: "LinkedIn",
-              value: "@ali-full-stack",
+              value: "@malirauf",
               href: "https://linkedin.com/in/mohammad-ali-40689121b",
             },
           ].map((link) => (
